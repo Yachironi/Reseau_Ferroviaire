@@ -1,4 +1,4 @@
-package Test;
+package reseauxFerroviaire;
 
 public class Rail {
 	

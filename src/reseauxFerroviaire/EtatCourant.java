@@ -1,4 +1,4 @@
-package Test;
+package reseauxFerroviaire;
 
 public class EtatCourant {
 	private int posiTete;          
@@ -6,11 +6,11 @@ public class EtatCourant {
 	private int viesseCourante;
 	private Rail myRail;
 	
-    public EtatCourant(int size, Rail rail, Direction sens) {
+    public EtatCourant(int position, Rail rail, Direction sens) {
         this.sens = sens;
         this.viesseCourante = 0;    /* A l'initialisation la vitesse courante est à 0 */  
         this.myRail = rail;
-        this.posiTete = size; 
+        this.posiTete = position; 
         
         /* Dnas le site il font un truc bizare que je comprend pas trop */
    
