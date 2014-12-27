@@ -12,6 +12,7 @@ public class Train {
 		this.id = idGen++;		/* besoin de faire un vérification pour l'id */
 		if(taille <=0 || vmax <=0){
 			System.out.println("IF");
+			System.out.println("Gishan est ");
 		}
 		this.taille = taille;
 		this.vMax =vmax;
