@@ -5,7 +5,7 @@ import exception.TrainException;
 public class Train {
 
 	private static int idGen = -1;
-	private static int nbrInstance=0;
+	private static int nbrInstance = 0;
 	private int id; // Identifiant du train
 	private int taille; // Taile du train en nombre de trançon
 	private int vMax; // Vitesse maximale du train
@@ -31,7 +31,6 @@ public class Train {
 
 	// Constructeur de train sans état
 
-	
 	/**
 	 * 
 	 * @param taille
@@ -54,26 +53,39 @@ public class Train {
 	}
 
 	/**
-	 * Arrêt immédiat du train
+	 * Modification de la vitesse du train
+	 * 
+	 * @param vitesse
+	 *            vitesse du train
+	 * @throws TrainException
 	 */
-	public void arret() {
-		setVitesse(0);
+
+	public void setVitesse(int vitesse) throws TrainException {
+		if (vitesse >= 0 || vitesse <= vMax) {
+			this.etatTrain.setViesseCourante(vitesse);
+		} else {
+			throw new TrainException("Vitesse non cohérente");
+		}
+
 	}
 
-	// Modification de la vitesse du train
-
-	public void setVitesse(int vitesse) {
-		this.etatTrain.setViesseCourante(0);
-	}
-	
-	
-	
 	/**
-	 *  Retourn le nobmre de trains
+	 * Arrête un train
+	 * 
+	 * @throws TrainException
+	 */
+	
+	public void arret() throws TrainException {
+		this.setVitesse(0);
+	}
+
+	/**
+	 * Retourn le nobmre de trains
+	 * 
 	 * @return Le nombre d'instance de train crée
 	 */
-	public int getNbrTrains(){
-		return  nbrInstance;
+	public int getNbrTrains() {
+		return nbrInstance;
 	}
 	/*
 	 * Avancer // vitesse + temps Arreter : OK Start ? on a beosin ou pas ?
