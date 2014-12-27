@@ -11,12 +11,12 @@ public class Train {
 	public Train(int taille, int vmax){
 		this.id = idGen++;		/* besoin de faire un vérification pour l'id */
 		if(taille <=0 || vmax <=0){
-			
+			System.out.println("IF");
 		}
 		this.taille = taille;
 		this.vMax =vmax;
 		/* a completer */ 
-		//etatTrain = new EtatCourant(taille, );  /* à l'init v=0, et positête = taille ? */
+		//getatTrain = new EtatCourant(taille, );  /* à l'init v=0, et positête = taille ? */
 										/* on doit ajouter Rail aussi alors ? */
 	}
 	
