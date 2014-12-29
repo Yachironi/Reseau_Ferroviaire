@@ -8,7 +8,7 @@ public class Train {
 	private static int idGen = -1;
 	private static int nbrInstance = 0;
 	private int id; // Identifiant du train
-	private int taille; // Taile du train en nombre de trançon
+	private int longueur; // Taile du train en nombre de trançon
 	private int vMax; // Vitesse maximale du train
 	private EtatCourant etatTrain;
 
@@ -20,17 +20,17 @@ public class Train {
 	 * @param etat
 	 * @throws TrainException
 	 */
-	public Train(int taille, int vMax, EtatCourant etat) throws TrainException {
+	public Train(int longueur, int vMax, EtatCourant etat) throws TrainException {
 		nbrInstance++;
 		// Géneration automatique d'identificateur
 		++idGen;
 		// Initialisation de l'id
 		this.id = idGen;
 		// Verification de la cohérence des paramètre d'initialisation
-		if (taille <= 0 || vMax <= 0) {
+		if (longueur <= 0 || vMax <= 0) {
 			throw new TrainException("Paramètres d'inisialité");
 		} else {
-			this.taille = taille;
+			this.longueur = longueur;
 			this.vMax = vMax;
 			this.etatTrain = etat;
 		}
@@ -43,16 +43,16 @@ public class Train {
 	 * @param vMax
 	 * @throws TrainException
 	 */
-	public Train(int taille, int vMax) throws TrainException {
+	public Train(int longueur, int vMax) throws TrainException {
 		// Géneration automatique d'identificateur
 		++idGen;
 		// Initialisation de l'id
 		this.id = idGen;
 		// Verification de la cohérence des paramètre d'initialisation
-		if (taille <= 0 || vMax <= 0) {
+		if (longueur <= 0 || vMax <= 0) {
 			throw new TrainException("Paramètres d'inisialité");
 		} else {
-			this.taille = taille;
+			this.longueur = longueur;
 			this.vMax = vMax;
 			this.etatTrain = null;
 		}
@@ -96,7 +96,7 @@ public class Train {
 
 	@Override
 	public String toString() {
-		return "Train [id=" + id + ", taille=" + taille + ", vMax=" + vMax
+		return "Train [id=" + id + ", longueur=" + longueur + ", vMax=" + vMax
 				+ ", etatTrain=" + etatTrain + "]";
 	}
 
@@ -118,8 +118,25 @@ public class Train {
 		}
 	}
 
+	public EtatCourant getEtatTrain() {
+		return etatTrain;
+	}
+
+	public void setEtatTrain(EtatCourant etatTrain) {
+		this.etatTrain = etatTrain;
+	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(int longueur) {
+		this.longueur = longueur;
+	}
+
+	
 	/*
 	 * Avancer // vitesse + temps Arreter : OK Start ? on a beosin ou pas ?
 	 */
-
+	
 }

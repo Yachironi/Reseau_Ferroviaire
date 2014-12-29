@@ -2,17 +2,61 @@ package reseauxFerroviaire;
 
 import java.util.Observable;
 
-public class Capteur extends Observable{
-	
-	private static int idGen=0;
+public class Capteur extends Observable {
+
+	private static int idGen = 0;
 	private int id;
-	private int numTrancon;
+	private int position;
+	private boolean trainPresent;
 	private Rail monRail;
-	
-	public Capteur(int num, Rail rail){
+
+	/**
+	 * Constructeur sans paramètres
+	 */
+	public Capteur() {
 		this.id = idGen++;
-		this.numTrancon = num;
-		this.monRail = rail;
+		this.position = 0;
+		this.monRail = null;
+		this.trainPresent = false;
 	}
+
+	/**
+	 * Constructeur parametré
+	 * @param position Le numéro de tronçon où le capteur va être placer
+	 * @param monRail le rail où le capteur va être placé
+	 */
+	public Capteur(int position, Rail monRail) {
+		this.id = idGen++;
+		this.position = position;
+		this.monRail = monRail;
+		this.trainPresent = false;
+	}
+
+	public int getPosition() {
+		return position;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
+	public boolean isTrainPresent() {
+		return trainPresent;
+	}
+
+	public void setTrainPresent(boolean trainPresent) {
+		this.trainPresent = trainPresent;
+		setChanged();
+		notifyObservers();
+	}
+
+	public Rail getMonRail() {
+		return monRail;
+	}
+
+	public void setMonRail(Rail monRail) {
+		this.monRail = monRail;
+	}
+	
 	
 }

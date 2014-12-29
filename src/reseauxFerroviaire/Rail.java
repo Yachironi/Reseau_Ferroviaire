@@ -1,69 +1,91 @@
 package reseauxFerroviaire;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import exception.RailException;
 
 public class Rail {
-	
-	private static int idGen=0;
-	private int id; 
-	private int nbTrancon;
-	private ArrayList <Capteur> capteurs;
 
-	
-	
-	public Rail(int nbTrancon, ArrayList<Capteur> capteurs) {
+	private static int idGen = 0;
+	private int id;
+	private int longueur;
+	private ArrayList<Train> trains;
+
+	public Rail(int longueur) {
 		this.id = idGen++;
-		this.nbTrancon = nbTrancon;
-		this.capteurs = capteurs;
+		this.longueur = longueur;
+		trains = null;
 	}
-
-
 
 	public static int getIdGen() {
 		return idGen;
 	}
 
-
-
 	public static void setIdGen(int idGen) {
 		Rail.idGen = idGen;
 	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
-	public int getNbTrancon() {
-		return nbTrancon;
+	public int getLongueur() {
+		return longueur;
 	}
 
-
-
-	public void setNbTrancon(int nbTrancon) {
-		this.nbTrancon = nbTrancon;
+	public void setLongueur(int longueur) throws RailException {
+		if(longueur>=getLongeurEffective()){
+			this.longueur = longueur;	
+		}else{
+			throw new RailException("Impossible de réduire la taille mois que ça longueur fective");
+		}
+		
 	}
 
-
-
-	public ArrayList<Capteur> getCapteurs() {
-		return capteurs;
+	public ArrayList<Train> getTrains() {
+		return trains;
 	}
 
+	public void setTrains(ArrayList<Train> trains) {
+		this.trains = trains;
+	}
 
+	public int getLongeurEffective() {
+		int longueurEffective = 0;
+		for (Iterator iterator = trains.iterator(); iterator.hasNext();) {
+			Train train = (Train) iterator.next();
+			longueurEffective += train.getLongueur();
+		}
+		return longueurEffective;
+	}
 
-	public void setCapteurs(ArrayList<Capteur> capteurs) {
-		this.capteurs = capteurs;
+	public void addTrain(Train train) throws Exception {
+		if (((trains.size() == 0) || ((trains.get(0).getEtatTrain().getSens() == train
+				.getEtatTrain().getSens())))
+				&& ((this.getLongeurEffective() + train.getLongueur()) <= this.longueur)) {
+			trains.add(train);
+		} else {
+			throw new Exception("Longueur de rail dépassé");
+		}
 	}
 	
+	public void removeTrain(Train train){
+		if(trains.contains(train)){
+			trains.remove(train);
+		}
+	}
 	
+
+	@Override
+	public String toString() {
+		return "Rail [id=" + id + ", longueur=" + longueur + ", trains="
+				+ trains + "]";
+	}
+	
+
 }

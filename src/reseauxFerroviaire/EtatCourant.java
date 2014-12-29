@@ -47,7 +47,7 @@ public class EtatCourant {
 	}
 
 	public void incrementePos() throws RailException{
-		if(posiTete+viesseCourante<=monRail.getNbTrancon()){
+		if(posiTete+viesseCourante<=monRail.getLongueur()){
 			posiTete+=viesseCourante;	
 		}else{
 			throw new RailException("Depassement de rail");
