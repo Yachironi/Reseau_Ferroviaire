@@ -36,6 +36,17 @@ public class Aiguillage extends Jonction {
 		}
 	}
 	
+	public void ajoutRailAmont(Rail enAmont){
+		if(listeRailAmont.contains(enAmont)){
+			
+		}
+	}
+	
+	public void ajoutRailAval(Rail enAval){
+		
+	}
+	
+	
 	
 	
 	
