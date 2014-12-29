@@ -106,11 +106,15 @@ public class Train {
 	 * @throws RailException
 	 * 
 	 */
-	public void avance() throws RailException {
-		if (etatTrain.getSens() == Direction.AVAL) {
-			etatTrain.incrementePos();
-		} else if (etatTrain.getSens() == Direction.AMONT) {
-			etatTrain.decrementePos();
+	public void avance() {
+		try {
+			if (etatTrain.getSens() == Direction.AVAL) {
+				etatTrain.incrementePos();
+			} else if (etatTrain.getSens() == Direction.AMONT) {
+				etatTrain.decrementePos();
+			}
+		} catch (RailException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
