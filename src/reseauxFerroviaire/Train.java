@@ -1,5 +1,6 @@
 package reseauxFerroviaire;
 
+import exception.RailException;
 import exception.TrainException;
 
 public class Train {
@@ -11,8 +12,14 @@ public class Train {
 	private int vMax; // Vitesse maximale du train
 	private EtatCourant etatTrain;
 
-	// Constructeur de train avec un état
-
+	/**
+	 * Constructeur de train avec un état
+	 * 
+	 * @param taille
+	 * @param vMax
+	 * @param etat
+	 * @throws TrainException
+	 */
 	public Train(int taille, int vMax, EtatCourant etat) throws TrainException {
 		nbrInstance++;
 		// Géneration automatique d'identificateur
@@ -29,9 +36,8 @@ public class Train {
 		}
 	}
 
-	// Constructeur de train sans état
-
 	/**
+	 * Constructeur de train sans état
 	 * 
 	 * @param taille
 	 * @param vMax
@@ -74,7 +80,7 @@ public class Train {
 	 * 
 	 * @throws TrainException
 	 */
-	
+
 	public void arret() throws TrainException {
 		this.setVitesse(0);
 	}
@@ -87,6 +93,27 @@ public class Train {
 	public int getNbrTrains() {
 		return nbrInstance;
 	}
+
+	@Override
+	public String toString() {
+		return "Train [id=" + id + ", taille=" + taille + ", vMax=" + vMax
+				+ ", etatTrain=" + etatTrain + "]";
+	}
+
+	/**
+	 * Avancer le train
+	 * 
+	 * @throws RailException
+	 * 
+	 */
+	public void avance() throws RailException {
+		if (etatTrain.getSens() == Direction.AVAL) {
+			etatTrain.incrementePos();
+		} else if (etatTrain.getSens() == Direction.AMONT) {
+			etatTrain.decrementePos();
+		}
+	}
+
 	/*
 	 * Avancer // vitesse + temps Arreter : OK Start ? on a beosin ou pas ?
 	 */
