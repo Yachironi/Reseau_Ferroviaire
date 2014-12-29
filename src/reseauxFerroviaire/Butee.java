@@ -15,7 +15,23 @@ public class Butee extends Jonction {
 	        id = idGen++;
 	        this.rail = rail;
 	    }
+
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+		public Rail getRail() {
+			return rail;
+		}
+
+		public void setRail(Rail rail) {
+			this.rail = rail;
+		}
 	   
-	  
+	    
 
 }
