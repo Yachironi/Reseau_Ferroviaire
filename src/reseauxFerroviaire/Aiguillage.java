@@ -9,8 +9,8 @@ public class Aiguillage extends Jonction {
 	
 	private static int idGen=0;
 	private int id; /* identificateur de l'aiguillage */
-	private ArrayList<Rail> listeRailAmont;
-	private ArrayList<Rail> listeRailAval;
+	private ArrayList<Rail> listeRailAmont; /* rail en amont */
+	private ArrayList<Rail> listeRailAval; /* rail aval */
 	private Rail sortieAmont; 
 	private Rail sortieAval;
 	
