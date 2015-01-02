@@ -18,8 +18,5 @@ public class SemaphoreTriCouleur extends Semaphore {
 		this.etat=etat;
 	}
 	
-	public void update(){
-		
-	}
 	
 }
