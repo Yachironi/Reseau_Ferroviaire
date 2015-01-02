@@ -1,5 +1,10 @@
 package reseauxFerroviaire;
 
-public class SemaphoreBiCouleur {
+public class SemaphoreBiCouleur extends Semaphore {
+	
+	public SemaphoreBiCouleur(){
+		super();
+	}
+	
 	
 }
