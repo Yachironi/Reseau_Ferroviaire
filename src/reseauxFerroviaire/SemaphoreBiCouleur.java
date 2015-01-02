@@ -10,8 +10,8 @@ public class SemaphoreBiCouleur extends Semaphore {
 		super();
 	}
 
-	public SemaphoreBiCouleur(EtatSemaphoreBiCouleur etat) {
-		super(etat);
+	public SemaphoreBiCouleur(EtatSemaphoreBiCouleur etat, Direction sens) {
+		super(etat, sens);
 	}
 
 	public double getRatio() {

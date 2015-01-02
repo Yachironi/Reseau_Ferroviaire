@@ -6,8 +6,8 @@ public class SemaphoreTriCouleur extends Semaphore {
 		super();
 	}
 	
-	public SemaphoreTriCouleur(EtatSemaphoreTriCouleur etat){
-		super(etat);		
+	public SemaphoreTriCouleur(EtatSemaphoreTriCouleur etat, Direction sens){
+		super(etat, sens);		
 	}
 	
 	public double getRatio(){

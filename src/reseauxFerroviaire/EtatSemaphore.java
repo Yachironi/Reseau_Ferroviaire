@@ -2,7 +2,7 @@ package reseauxFerroviaire;
 
 import java.awt.Color;
 
-public class EtatSemaphore {
+public abstract class EtatSemaphore {
 	
 	protected double ratioRalentissement;
 
