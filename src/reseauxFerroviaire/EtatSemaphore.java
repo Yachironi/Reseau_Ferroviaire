@@ -1,13 +1,10 @@
 package reseauxFerroviaire;
 
-import java.awt.Color;
+public abstract class EtatSemaphore {
 
-public class EtatSemaphore {
-	
 	private double ratioRalentissement;
-
-	public EtatSemaphore() {
-		this.ratioRalentissement=0.0;
+	public EtatSemaphore(double n) {
+		this.ratioRalentissement=n;
 	}
 
 	public double getRatioRalentissement() {
@@ -17,5 +14,5 @@ public class EtatSemaphore {
 	public void setRatioRalentissement(double ratioRalentissement) {
 		this.ratioRalentissement = ratioRalentissement;
 	}
-	
+
 }

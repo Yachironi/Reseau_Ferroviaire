@@ -2,13 +2,12 @@ package reseauxFerroviaire;
 
 import java.util.Observable;
 
-public class Semaphore extends Observable {
+public abstract class Semaphore extends Observable {
 
+	private static int idGen = -1;
 	protected EtatSemaphore etat;
 	protected int id;
-	private static int idGen = -1;
 	
-
 	public Semaphore() {
 		this.etat = null;
 		this.id=idGen++;
@@ -17,5 +16,7 @@ public class Semaphore extends Observable {
 		this();
 		this.etat = etat;
 	}
+	
+	
 
 }
