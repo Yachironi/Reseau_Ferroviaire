@@ -11,7 +11,8 @@ public class Rail {
 	private int id;
 	private int longueur;
 	private ArrayList<Train> trains;
-	private ArrayList<Capteur> capteurs;
+	private ArrayList<Capteur> capteurs; /* liste des capteurs*/
+	
 	
 	public Rail(int longueur) {
 		this.id = idGen++;
