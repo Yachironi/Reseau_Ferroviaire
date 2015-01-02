@@ -1,10 +1,19 @@
 package reseauxFerroviaire;
 
 public class CapteurPresence extends Capteur {
+		
 	public CapteurPresence(int num, Rail rail) {
 		super(num, rail);
-		// TODO Stub du constructeur généré automatiquement
+	}
+	
+	public CapteurPresence(){
+		super();
 	}
 
-	private Integer id;
+	public void TrainPassé(){
+		//this.getMonRail().getTrains()
+	}
+	
+	
+	
 }

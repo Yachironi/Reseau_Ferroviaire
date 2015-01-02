@@ -2,6 +2,8 @@ package reseauxFerroviaire;
 
 import java.util.Observable;
 
+import exception.CapteurExeption;
+
 public class Capteur extends Observable {
 
 	private static int idGen = 0;
@@ -36,7 +38,8 @@ public class Capteur extends Observable {
 		return position;
 	}
 
-	public void setPosition(int position) {
+	public void setPosition(int position) throws CapteurExeption{
+		if(position <=0 || position >monRail.getLongueur()) throw new CapteurExeption("Impossible de positioner à cet endroit");
 		this.position = position;
 	}
 
@@ -57,6 +60,4 @@ public class Capteur extends Observable {
 	public void setMonRail(Rail monRail) {
 		this.monRail = monRail;
 	}
-	
-	
 }
