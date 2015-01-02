@@ -117,7 +117,7 @@ public class Train {
 			System.out.println(e.getMessage());
 		}
 		
-		// On aura besoin de Capteur.update();
+		// On aura besoin de Capteur.update() à chaque avancement du train
 	}
 
 	public EtatCourant getEtatTrain() {
