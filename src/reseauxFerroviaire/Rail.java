@@ -11,11 +11,13 @@ public class Rail {
 	private int id;
 	private int longueur;
 	private ArrayList<Train> trains;
-
+	private ArrayList<Capteur> capteurs;
+	
 	public Rail(int longueur) {
 		this.id = idGen++;
 		this.longueur = longueur;
 		trains = null;
+		capteurs=null;
 	}
 
 	public static int getIdGen() {
