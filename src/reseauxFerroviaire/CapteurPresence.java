@@ -12,6 +12,7 @@ public class CapteurPresence extends Capteur {
 
 	public void TrainPassé(){
 		//this.getMonRail().getTrains()
+		//syso
 	}
 	
 	
