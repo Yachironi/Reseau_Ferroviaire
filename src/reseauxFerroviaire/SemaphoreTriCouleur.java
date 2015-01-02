@@ -1,16 +1,25 @@
 package reseauxFerroviaire;
 
-import java.awt.Color;
-
 public class SemaphoreTriCouleur extends Semaphore {
 	
 	public SemaphoreTriCouleur(){
 		super();
-//		this.etat = new EtatSemaphoreTriCouleur();	
 	}
 	
-	public SemaphoreTriCouleur(Color c){
-		super();
-		this.etat = new EtatSemaphoreTriCouleur(c);	
+	public SemaphoreTriCouleur(EtatSemaphoreTriCouleur etat){
+		super(etat);		
 	}
+	
+	public double getRatio(){
+		return etat.getRatioRalentissement();
+	}
+	
+	public void setEtat(EtatSemaphoreTriCouleur etat){
+		this.etat=etat;
+	}
+	
+	public void update(){
+		
+	}
+	
 }

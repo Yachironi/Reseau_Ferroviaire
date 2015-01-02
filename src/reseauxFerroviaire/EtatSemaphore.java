@@ -4,10 +4,10 @@ import java.awt.Color;
 
 public class EtatSemaphore {
 	
-	private double ratioRalentissement;
+	protected double ratioRalentissement;
 
-	public EtatSemaphore() {
-		this.ratioRalentissement=0.0;
+	public EtatSemaphore(double n) {
+		this.ratioRalentissement=n;
 	}
 
 	public double getRatioRalentissement() {
