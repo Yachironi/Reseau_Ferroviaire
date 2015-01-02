@@ -11,7 +11,9 @@ public class Rail {
 	private int id;
 	private int longueur;
 	private ArrayList<Train> trains;
-	private ArrayList<Capteur> capteurs; /* liste des capteurs*/
+	private ArrayList<Capteur> capteurs;
+	private Jonction jonctionTete;
+	private Jonction jonctionQueue;
 	
 	
 	public Rail(int longueur) {
