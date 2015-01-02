@@ -14,13 +14,12 @@ public class Rail {
 	private ArrayList<Capteur> capteurs;
 	private Jonction jonctionTete;
 	private Jonction jonctionQueue;
-	
-	
+
 	public Rail(int longueur) {
 		this.id = idGen++;
 		this.longueur = longueur;
 		trains = null;
-		capteurs=null;
+		capteurs = null;
 	}
 
 	public static int getIdGen() {
@@ -44,12 +43,13 @@ public class Rail {
 	}
 
 	public void setLongueur(int longueur) throws RailException {
-		if(longueur>=getLongeurEffective()){
-			this.longueur = longueur;	
-		}else{
-			throw new RailException("Impossible de réduire la taille mois que ça longueur fective");
+		if (longueur >= getLongeurEffective()) {
+			this.longueur = longueur;
+		} else {
+			throw new RailException(
+					"Impossible de réduire la taille mois que ça longueur fective");
 		}
-		
+
 	}
 
 	public ArrayList<Train> getTrains() {
@@ -78,19 +78,40 @@ public class Rail {
 			throw new Exception("Longueur de rail dépassé");
 		}
 	}
-	
-	public void removeTrain(Train train){
-		if(trains.contains(train)){
+
+	public void removeTrain(Train train) {
+		if (trains.contains(train)) {
 			trains.remove(train);
 		}
 	}
-	
+
+	/**
+	 * Retourne s'il existe le train à la position donnée , si non elle renvoi
+	 * null
+	 * 
+	 * @param position
+	 * @return
+	 */
+	public Train getTrainAt(int position) {
+		for (Iterator iterator = trains.iterator(); iterator.hasNext();) {
+			Train train = (Train) iterator.next();
+			if (train.getEtatTrain().getSens() == Direction.AVAL) {
+				if (train.getEtatTrain().getPosiTete() - train.getLongueur() <= position) {
+					return train;
+				}
+			} else {
+				if (train.getEtatTrain().getPosiTete() + train.getLongueur() >= position) {
+					return train;
+				}
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public String toString() {
 		return "Rail [id=" + id + ", longueur=" + longueur + ", trains="
 				+ trains + "]";
 	}
-	
 
 }

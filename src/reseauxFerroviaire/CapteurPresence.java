@@ -1,20 +1,41 @@
 package reseauxFerroviaire;
 
+import exception.CapteurExeption;
+
 public class CapteurPresence extends Capteur {
-		
-	public CapteurPresence(int num, Rail rail) {
+
+	private boolean trainPresent;
+	
+	public CapteurPresence(int num, Rail rail) throws CapteurExeption {
 		super(num, rail);
+		trainPresent=false;
 	}
 	
 	public CapteurPresence(){
 		super();
+		trainPresent=false;
 	}
 
-	public void TrainPassé(){
-		//this.getMonRail().getTrains()
-		//syso
+	public boolean isTrainPresent() {
+		return trainPresent;
 	}
-	
-	
-	
+
+	public void setTrainPresent(boolean trainPresent) {
+		this.trainPresent = trainPresent;
+		setChanged();
+		notifyObservers();
+	}
+
+
+	/**
+	 * Elle change la valeur du capteur lors du passage au dessus 
+	 */
+	@Override
+	public void update() {
+		if(monRail.getTrainAt(position)!=null){
+			setTrainPresent(true);
+		}else{
+			setTrainPresent(false);
+		}
+	}
 }
