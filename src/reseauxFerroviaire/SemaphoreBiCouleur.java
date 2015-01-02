@@ -6,5 +6,9 @@ public class SemaphoreBiCouleur extends Semaphore {
 		super();
 	}
 	
+	public SemaphoreBiCouleur(EtatSemphoreBiCouleur etat){
+		super(etat);
+	}
+	
 	
 }
