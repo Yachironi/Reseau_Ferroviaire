@@ -1,16 +1,14 @@
 package reseauxFerroviaire;
 
-import java.util.Iterator;
-
 import exception.EtatSemaphoreException;
 
-public class SemaphoreBiCouleur extends Semaphore {
+public class SemaphoreTriCouleur extends Semaphore {
 
-	public SemaphoreBiCouleur() {
+	public SemaphoreTriCouleur() {
 		super();
 	}
 
-	public SemaphoreBiCouleur(EtatSemaphoreBiCouleur etat, Direction sens) {
+	public SemaphoreTriCouleur(EtatSemaphoreBiCouleur etat, Direction sens) {
 		super(etat, sens);
 	}
 
