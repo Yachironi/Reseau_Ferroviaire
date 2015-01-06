@@ -22,7 +22,7 @@ public class CapteurVitesse extends Capteur {
 	public void setVitesseTrain(int vitesseTrain) {
 		this.vitesseTrain = vitesseTrain;
 		setChanged();
-		notifyObservers();
+		notifyObservers(this);
 	}
 
 	/**

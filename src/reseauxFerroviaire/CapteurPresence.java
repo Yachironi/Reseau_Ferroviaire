@@ -23,7 +23,7 @@ public class CapteurPresence extends Capteur {
 	public void setTrainPresent(boolean trainPresent) {
 		this.trainPresent = trainPresent;
 		setChanged();
-		notifyObservers();
+		notifyObservers(this);
 	}
 
 
