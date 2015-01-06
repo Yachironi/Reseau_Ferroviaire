@@ -59,4 +59,23 @@ public abstract class Capteur extends Observable {
 	 * Elle change la valeur du capteur lors du passage au dessus
 	 */
 	abstract public void update();
+
+	public boolean equals(Object arg) {
+		if (arg == null) {
+			return false;
+		}
+		if (arg == this) {
+			return true;
+		}
+		try{
+			Capteur capteur = (Capteur) arg;
+			if(capteur.id==this.id){
+				return true;
+			}else{
+				return false;
+			}
+		}catch(ClassCastException e){
+			return false;
+		}
+	}
 }

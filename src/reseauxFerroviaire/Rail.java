@@ -108,6 +108,68 @@ public class Rail {
 		return null;
 	}
 
+	public boolean isTrainPresent() {
+		for (Iterator iterator = capteurs.iterator(); iterator.hasNext();) {
+			try {
+				CapteurPresence capteur = (CapteurPresence) iterator.next();
+				if (capteur.isTrainPresent()) {
+					return true;
+				}
+			} catch (ClassCastException e) {
+
+			}
+		}
+		return false;
+	}
+
+	public CapteurPresence getCapteurPresenceAt(int index) {
+		try {
+			CapteurPresence captuer = (CapteurPresence) capteurs.get(index);
+			return captuer;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public ArrayList<CapteurPresence> getListCapteurPresence() {
+		ArrayList<CapteurPresence> capteursPresence = new ArrayList<>();
+		for (Iterator iterator = capteursPresence.iterator(); iterator
+				.hasNext();) {
+			try {
+				CapteurPresence capteurPresence = (CapteurPresence) iterator
+						.next();
+				capteursPresence.add(capteurPresence);
+			} catch (Exception e) {
+				continue;
+			}
+		}
+		return capteursPresence;
+	}
+
+	public ArrayList<Capteur> getCapteurs() {
+		return capteurs;
+	}
+
+	public void setCapteurs(ArrayList<Capteur> capteurs) {
+		this.capteurs = capteurs;
+	}
+
+	public Jonction getJonctionTete() {
+		return jonctionTete;
+	}
+
+	public void setJonctionTete(Jonction jonctionTete) {
+		this.jonctionTete = jonctionTete;
+	}
+
+	public Jonction getJonctionQueue() {
+		return jonctionQueue;
+	}
+
+	public void setJonctionQueue(Jonction jonctionQueue) {
+		this.jonctionQueue = jonctionQueue;
+	}
+
 	@Override
 	public String toString() {
 		return "Rail [id=" + id + ", longueur=" + longueur + ", trains="

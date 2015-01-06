@@ -1,9 +1,9 @@
 package reseauxFerroviaire;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import exception.AiguillageException;
-import exception.TrainException;
 
 public class Aiguillage extends Jonction {
 
@@ -43,7 +43,7 @@ public class Aiguillage extends Jonction {
 		}
 	}
 
-	public void remove(Rail rail) throws AiguillageException{
+	public void remove(Rail rail) throws AiguillageException {
 		if (!listeRail.contains(rail)) {
 			throw new AiguillageException(
 					"L'ajout de la rail impossible car la rail n'appartient pas a la liste");
@@ -78,6 +78,21 @@ public class Aiguillage extends Jonction {
 		}
 	}
 	
-	
 
+	public ArrayList<Rail> getListeRail() {
+		return listeRail;
+	}
+
+	public void setListeRail(ArrayList<Rail> listeRail) {
+		this.listeRail = listeRail;
+	}
+
+	public ArrayList<CapteurPresence> getListCapteurPresence() {
+		ArrayList<CapteurPresence> capteursPresence = new ArrayList<>();
+		for (Iterator iterator = listeRail.iterator(); iterator.hasNext();) {
+			Rail rail = (Rail) iterator.next();
+			capteursPresence.add(rail.getListCapteurPresence().get(0));
+		}
+		return capteursPresence;
+	}
 }
