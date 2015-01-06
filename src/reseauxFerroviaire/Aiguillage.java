@@ -67,6 +67,16 @@ public class Aiguillage extends Jonction {
 	public void setSortieAval(Rail sortieAval) {
 		this.sortieAval = sortieAval;
 	}
+
+	@Override
+	public Rail getSuivant(Rail rail) {
+		if(rail.equals(sortieAmont)){
+			return sortieAval;
+		}
+		else{
+			return sortieAval;
+		}
+	}
 	
 	
 

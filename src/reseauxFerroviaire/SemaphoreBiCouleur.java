@@ -10,8 +10,8 @@ public class SemaphoreBiCouleur extends Semaphore {
 		super();
 	}
 
-	public SemaphoreBiCouleur(EtatSemaphoreBiCouleur etat, Direction sens) {
-		super(etat, sens);
+	public SemaphoreBiCouleur(EtatSemaphoreBiCouleur etat, Direction sens, int position) {
+		super(etat, sens, position);
 	}
 
 	public double getRatio() {
@@ -26,5 +26,10 @@ public class SemaphoreBiCouleur extends Semaphore {
 			throw new EtatSemaphoreException("Changement d'etat incoherent");
 		}
 	}
+	
+	
+	/*
+	 * equals de EtatSemaphoreBiCouleur
+	 */
 
 }

@@ -12,10 +12,7 @@ public class EtatCourant {
         this.sens = sens;
         this.viesseCourante = 0;    /* A l'initialisation la vitesse courante est à 0 */  
         this.monRail = rail;
-        this.posiTete = position; 
-        
-        /* Dnas le site il font un truc bizare que je comprend pas trop */
-   
+        this.posiTete = position;    
     }
 
 	public int getPosiTete() {

@@ -110,9 +110,16 @@ public class Train {
 		try {
 			if (etatTrain.getSens() == Direction.AVAL) {
 				etatTrain.incrementePos();
+			
 			} else if (etatTrain.getSens() == Direction.AMONT) {
 				etatTrain.decrementePos();
 			}
+			
+			
+			
+			
+			
+			
 		} catch (RailException e) {
 			System.out.println(e.getMessage());
 		}
@@ -136,9 +143,6 @@ public class Train {
 		this.longueur = longueur;
 	}
 
-	
-	/*
-	 * Avancer // vitesse + temps Arreter : OK Start ? on a beosin ou pas ?
-	 */
+
 	
 }

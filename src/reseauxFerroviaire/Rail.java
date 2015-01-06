@@ -113,5 +113,8 @@ public class Rail {
 		return "Rail [id=" + id + ", longueur=" + longueur + ", trains="
 				+ trains + "]";
 	}
-
+	
+	public Rail getSuivant(Rail rail){
+		return jonctionQueue.getSuivant(rail);
+	}
 }
