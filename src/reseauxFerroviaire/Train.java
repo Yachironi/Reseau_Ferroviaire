@@ -15,7 +15,7 @@ public class Train {
 	/**
 	 * Constructeur de train avec un état
 	 * 
-	 * @param taille
+	 * @param longueur en nombre
 	 * @param vMax
 	 * @param etat
 	 * @throws TrainException
@@ -27,7 +27,7 @@ public class Train {
 		// Initialisation de l'id
 		this.id = idGen;
 		// Verification de la cohérence des paramètre d'initialisation
-		if (longueur <= 0 || vMax <= 0) {
+		if (longueur <= 0 || vMax <= 0) { // et on doit verifier la longeur de rail !!!
 			throw new TrainException("Paramètres d'inisialité");
 		} else {
 			this.longueur = longueur;
