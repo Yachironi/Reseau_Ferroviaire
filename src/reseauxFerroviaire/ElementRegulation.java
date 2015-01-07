@@ -35,6 +35,10 @@ public class ElementRegulation implements Observer {
 
 	private void regulation() {
 		
+		
+		
+		
+		
 	}
 
 }

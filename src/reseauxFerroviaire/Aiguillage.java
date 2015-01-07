@@ -7,8 +7,6 @@ import exception.AiguillageException;
 
 public class Aiguillage extends Jonction {
 
-	private static int idGen = 0;
-	private int id; /* identificateur de l'aiguillage */
 	private ArrayList<Rail> listeRail; /* rail possible à */
 	private Rail sortieAmont;
 	private Rail sortieAval;
@@ -23,8 +21,8 @@ public class Aiguillage extends Jonction {
 	 */
 	public Aiguillage(ArrayList<Rail> listeRail, Rail sortieAmont,
 			Rail sortieAval) throws AiguillageException {
-
-		if (listeRail.size() >= 3) {
+		if (listeRail.size() >= 3) {			
+			// super() ??
 			this.listeRail = listeRail;
 			this.sortieAmont = sortieAmont;
 			this.sortieAval = sortieAval;
@@ -33,7 +31,7 @@ public class Aiguillage extends Jonction {
 					"Mauvaise instantiation du constructeur");
 		}
 	}
-
+	
 	public void ajoutRail(Rail rail) throws AiguillageException {
 		if (listeRail.contains(rail)) {
 			throw new AiguillageException(
@@ -78,7 +76,6 @@ public class Aiguillage extends Jonction {
 		}
 	}
 	
-
 	public ArrayList<Rail> getListeRail() {
 		return listeRail;
 	}

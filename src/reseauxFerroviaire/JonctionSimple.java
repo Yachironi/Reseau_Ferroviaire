@@ -18,8 +18,10 @@ public class JonctionSimple extends Jonction{
 
 	@Override
 	public Rail getSuivant(Rail rail) {
-		// TODO Auto-generated method stub
-		return null;
+		if(rail.equals(amont)) return aval;
+		else return amont;
 	}
+	
+	
 	
 }

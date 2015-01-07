@@ -124,8 +124,8 @@ public class Rail {
 
 	public CapteurPresence getCapteurPresenceAt(int index) {
 		try {
-			CapteurPresence captuer = (CapteurPresence) capteurs.get(index);
-			return captuer;
+			CapteurPresence capteur = (CapteurPresence) capteurs.get(index);
+			return capteur;
 		} catch (Exception e) {
 			return null;
 		}

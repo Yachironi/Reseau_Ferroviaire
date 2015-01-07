@@ -115,10 +115,7 @@ public class Train {
 				etatTrain.decrementePos();
 			}
 			
-			
-			
-			
-			
+			// regarder les semaphores ? avant ? apres ? 			
 			
 		} catch (RailException e) {
 			System.out.println(e.getMessage());
