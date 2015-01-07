@@ -24,7 +24,7 @@ public class ElementRegulationAiguillageTrois extends ElementRegulation {
 		case 0:
 			aiguillage.setEntree(rail);
 			aiguillage.setSortie(aiguillage.getListeRail().get(1));
-			aiguillage.getEntree().getJonctionTete()
+			//aiguillage.getEntree().getJonctionTete()
 			break;
 		case 1:
 			aiguillage.setEntree(rail);
