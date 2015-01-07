@@ -139,6 +139,14 @@ public class Train {
 	public void setLongueur(int longueur) {
 		this.longueur = longueur;
 	}
+	
+	public Rail getRailSuivant(){
+		if(etatTrain.getSens().equals(Direction.AMONT)){
+			return etatTrain.getMonRail().getJonctionTete().getSuivant(etatTrain.getMonRail());
+		}
+		else 
+			return etatTrain.getMonRail().getJonctionQueue().getSuivant(etatTrain.getMonRail());
+	}
 
 
 	
