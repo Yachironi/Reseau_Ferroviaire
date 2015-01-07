@@ -20,17 +20,14 @@ public class Aiguillage extends Jonction {
 	 * @throws AiguillageException
 	 */
 	public Aiguillage(ArrayList<Rail> listeRail, Rail sortieAmont,
-			Rail sortieAval) throws AiguillageException {
-		if (listeRail.size() >= 3) {			
-			// super() ??
+			Rail sortieAval){
+			super();
 			this.listeRail = listeRail;
 			this.entree = sortieAmont;
 			this.sortie = sortieAval;
-		} else {
-			throw new AiguillageException(
-					"Mauvaise instantiation du constructeur");
-		}
 	}
+	
+	
 	
 	public void ajoutRail(Rail rail) throws AiguillageException {
 		if (listeRail.contains(rail)) {
