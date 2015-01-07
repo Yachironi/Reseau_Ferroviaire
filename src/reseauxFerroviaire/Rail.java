@@ -14,7 +14,9 @@ public class Rail {
 	private ArrayList<Capteur> capteurs;
 	private Jonction jonctionTete;
 	private Jonction jonctionQueue;
-
+	private Semaphore semaTete;
+	private Semaphore semaQueue;
+	
 	public Rail(int longueur) {
 		this.id = idGen++;
 		this.longueur = longueur;
@@ -169,14 +171,26 @@ public class Rail {
 	public void setJonctionQueue(Jonction jonctionQueue) {
 		this.jonctionQueue = jonctionQueue;
 	}
+	
+	public Semaphore getSemaTete() {
+		return semaTete;
+	}
+
+	public void setSemaTete(Semaphore semaTete) {
+		this.semaTete = semaTete;
+	}
+
+	public Semaphore getSemaQueue() {
+		return semaQueue;
+	}
+
+	public void setSemaQueue(Semaphore semaQueue) {
+		this.semaQueue = semaQueue;
+	}
 
 	@Override
 	public String toString() {
 		return "Rail [id=" + id + ", longueur=" + longueur + ", trains="
 				+ trains + "]";
-	}
-	
-	public Rail getSuivant(Rail rail){
-		return jonctionQueue.getSuivant(rail);
 	}
 }
