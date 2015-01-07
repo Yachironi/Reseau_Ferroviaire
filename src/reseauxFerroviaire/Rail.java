@@ -179,4 +179,6 @@ public class Rail {
 	public Rail getSuivant(Rail rail){
 		return jonctionQueue.getSuivant(rail);
 	}
+	
+	// Equals à coder
 }

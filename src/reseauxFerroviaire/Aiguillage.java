@@ -69,7 +69,7 @@ public class Aiguillage extends Jonction {
 			return sortie;
 		}
 		else{
-			return sortie;
+			return entree;
 		}
 	}
 	
@@ -88,5 +88,9 @@ public class Aiguillage extends Jonction {
 			capteursPresence.add(rail.getListCapteurPresence().get(0));
 		}
 		return capteursPresence;
+	}
+	
+	protected void setSemaphoreConfiguration(ArrayList<Boolean> etatsSemaphore){
+		
 	}
 }
