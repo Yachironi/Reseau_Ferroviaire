@@ -30,7 +30,6 @@ public abstract class ElementRegulation implements Observer {
 			demandePassage(capteur.getMonRail());
 		}
 	}
-	
 	protected abstract void demandePassage(Rail rail);
 	protected abstract void regulation(Rail rail);
 
