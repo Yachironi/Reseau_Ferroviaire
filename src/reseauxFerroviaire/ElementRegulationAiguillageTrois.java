@@ -39,7 +39,7 @@ public class ElementRegulationAiguillageTrois extends ElementRegulation {
 	}
 	@Override
 	protected void regulation(Rail rail) {
-		
+		// Test de collision !!!
 		changeConfiguration(rail);
 		
 	}

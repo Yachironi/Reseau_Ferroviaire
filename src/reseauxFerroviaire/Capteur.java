@@ -67,14 +67,14 @@ public abstract class Capteur extends Observable {
 		if (arg == this) {
 			return true;
 		}
-		try{
+		try {
 			Capteur capteur = (Capteur) arg;
-			if(capteur.id==this.id){
+			if (capteur.id == this.id) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
-		}catch(ClassCastException e){
+		} catch (ClassCastException e) {
 			return false;
 		}
 	}
