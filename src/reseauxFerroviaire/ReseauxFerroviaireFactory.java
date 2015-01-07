@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class ReseauxFerroviaireFactory {
 	
-	public ArrayList<Rail> getSegment(int nombre, boolean buteeAmont, boolean buteeAval){
+	/*
+	 * 
+	 */
+	public ArrayList<Rail> getSegment(int nombre, boolean buteeAmont, boolean buteeAval, int taille){
 		ArrayList <Rail> segment = new ArrayList<Rail>();
-		ArrayList <JonctionSimple> jonctionSimple = new ArrayList<JonctionSimple>();
-		
+		int tailleRail = (int) taille/nombre;
 		for(int i=0; i<nombre;i++){
-			segment.add(new Rail());
+			segment.add(new Rail(tailleRail));
 		}
 		
 		for(int i=0; i<nombre-1; i++){
@@ -28,7 +30,7 @@ public class ReseauxFerroviaireFactory {
 		return segment;
 	}
 	
-	public Aiguillage getAiguillage3Voies(ArrayList<Rail> connect){
+	/*public Aiguillage getAiguillage3Voies(ArrayList<Rail> connect){
 		if(connect.size()>=3){
 			
 		}
@@ -37,7 +39,7 @@ public class ReseauxFerroviaireFactory {
 	public Aiguillage getAiguillage4Voies(){
 		if() 
 	}
-	
+	*/
 	
 	
 	
