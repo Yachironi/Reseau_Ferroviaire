@@ -10,8 +10,8 @@ public class Aiguillage extends Jonction {
 	private static int idGen = 0;
 	private int id; /* identificateur de l'aiguillage */
 	private ArrayList<Rail> listeRail; /* rail possible à */
-	private Rail sortieAmont;
-	private Rail sortieAval;
+	private Rail entree;
+	private Rail sortie;
 
 	/**
 	 * Constructeur
@@ -26,8 +26,8 @@ public class Aiguillage extends Jonction {
 
 		if (listeRail.size() >= 3) {
 			this.listeRail = listeRail;
-			this.sortieAmont = sortieAmont;
-			this.sortieAval = sortieAval;
+			this.entree = sortieAmont;
+			this.sortie = sortieAval;
 		} else {
 			throw new AiguillageException(
 					"Mauvaise instantiation du constructeur");
@@ -52,29 +52,29 @@ public class Aiguillage extends Jonction {
 		}
 	}
 
-	public Rail getSortieAmont() {
-		return sortieAmont;
+	public Rail getEntree() {
+		return entree;
 	}
 
-	public void setSortieAmont(Rail sortieAmont) {
-		this.sortieAmont = sortieAmont;
+	public void setEntree(Rail sortieAmont) {
+		this.entree = sortieAmont;
 	}
 
-	public Rail getSortieAval() {
-		return sortieAval;
+	public Rail getSortie() {
+		return sortie;
 	}
 
-	public void setSortieAval(Rail sortieAval) {
-		this.sortieAval = sortieAval;
+	public void setSortie(Rail sortieAval) {
+		this.sortie = sortieAval;
 	}
 
 	@Override
 	public Rail getSuivant(Rail rail) {
-		if(rail.equals(sortieAmont)){
-			return sortieAval;
+		if(rail.equals(entree)){
+			return sortie;
 		}
 		else{
-			return sortieAval;
+			return sortie;
 		}
 	}
 	
