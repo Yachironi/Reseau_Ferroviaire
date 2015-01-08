@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import exception.AiguillageException;
+import exception.EtatSemaphoreException;
 
 public class Aiguillage extends Jonction {
 
@@ -90,7 +91,9 @@ public class Aiguillage extends Jonction {
 		return capteursPresence;
 	}
 	
-	protected void setSemaphoreConfiguration(ArrayList<Boolean> etatsSemaphore){
-		
+	protected void setSemaphoreConfiguration(ArrayList<EtatSemaphore> etatsSemaphore) throws EtatSemaphoreException{
+		for (int i = 0; i< listeRail.size();i++) {
+			listeRail.get(i).getSemaQueue().setEtat(etatsSemaphore.get(i));
+		}
 	}
 }

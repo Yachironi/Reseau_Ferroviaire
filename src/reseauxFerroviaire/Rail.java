@@ -179,6 +179,9 @@ public class Rail {
 	public void setSemaTete(Semaphore semaTete) {
 		this.semaTete = semaTete;
 	}
+	public void setEtatSemaTete(Semaphore semaTete) {
+		this.semaTete = semaTete;
+	}
 
 	public Semaphore getSemaQueue() {
 		return semaQueue;
@@ -187,11 +190,19 @@ public class Rail {
 	public void setSemaQueue(Semaphore semaQueue) {
 		this.semaQueue = semaQueue;
 	}
+	public void setEtatSemaQueue(Semaphore semaQueue) {
+		this.semaQueue = semaQueue;
+	}
 
 	@Override
 	public String toString() {
 		return "Rail [id=" + id + ", longueur=" + longueur + ", trains="
 				+ trains + "]";
+	}
+
+	public boolean voieEstLibre() {
+		// 
+		return false;
 	}
 	
 	// Equals à coder
