@@ -1,6 +1,7 @@
 package reseauxFerroviaire;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -83,6 +84,12 @@ public class ElementRegulationAiguillageTrois extends ElementRegulation {
 		}
 	}
 
+	/**
+	 * Verification de possibilité de passage sur le rail de sortie
+	 * @param rail Rail d'entrée
+ 	 * @param i index du rail de sortie sur la liste des rails de l'aiguillage
+	 * @return Renvoi si le train qui vient sur le rail d'entreé peut rouller sur la rail de sortie ou non
+	 */
 	private boolean voieLibre(Rail rail, int i) {
 		if (aiguillage.getListeRail().get(i).getTrains().size() > 0) {
 			if (aiguillage.getListeRail().get(i).getTrains().get(0)
@@ -100,9 +107,7 @@ public class ElementRegulationAiguillageTrois extends ElementRegulation {
 	@Override
 	protected synchronized void regulation() {
 
-		// Test de collision !!!
 		Rail railDemande = demandes.poll();
-
 		try {
 			changeConfiguration(railDemande);
 			

@@ -33,6 +33,7 @@ public abstract class ElementRegulation implements Observer {
 		}
 	}
 	protected abstract void demandePassage(Rail rail);
+	
 	protected abstract void regulation() throws EtatSemaphoreException;
 
 }
