@@ -3,71 +3,70 @@ package reseauxFerroviaire;
 import exception.RailException;
 
 public class EtatCourant {
-	private int posiTete;          
+	private int posiTete;
 	private Direction sens;
-	private int viesseCourante;
+	private int vitesseCourante;
 	private Rail monRail;
-	
-    public EtatCourant(int position, Rail rail, Direction sens) {
-        this.sens = sens;
-        this.viesseCourante = 0;    /* A l'initialisation la vitesse courante est à 0 */  
-        this.monRail = rail;
-        this.posiTete = position;    
-    }
+
+	public EtatCourant(int position, Rail rail, Direction sens) {
+		this.sens = sens;
+		this.vitesseCourante = 0; /*
+								 * A l'initialisation la vitesse courante est à
+								 * 0
+								 */
+		this.monRail = rail;
+		this.posiTete = position;
+	}
 
 	public int getPosiTete() {
 		return posiTete;
 	}
+
 	public void setPosiTete(int posiTete) {
 		this.posiTete = posiTete;
 	}
+
 	public Direction getSens() {
 		return sens;
 	}
+
 	public void setSens(Direction sens) {
 		this.sens = sens;
 	}
-	public int getViesseCourante() {
-		return viesseCourante;
+
+	public int getVitesseCourante() {
+		return vitesseCourante;
 	}
-	public void setViesseCourante(int viesseCourante) {
-		this.viesseCourante = viesseCourante;
+
+	public void setVitesseCourante(int vitesseCourante) {
+		this.vitesseCourante = vitesseCourante;
 	}
-	
+
 	public Rail getMonRail() {
 		return monRail;
 	}
 
 	public void setMonRail(Rail monRail) {
-		posiTete=0;
+		posiTete = 0;
 		this.monRail = monRail;
 	}
 
-	public void incrementePos() throws RailException{
-		if(posiTete+viesseCourante<=monRail.getLongueur()){
-			posiTete+=viesseCourante;	
-		}else{
+	
+
+	public void decrementePos() throws RailException {
+		if (posiTete - vitesseCourante > 0) {
+			posiTete -= vitesseCourante;
+		} else {
 			throw new RailException("Depassement de rail");
 		}
-		
+
 	}
 
-	public void decrementePos() throws RailException{
-		if(posiTete-viesseCourante>0){
-			posiTete-=viesseCourante;	
-		}else{
-			throw new RailException("Depassement de rail");
-		}
-		
-	}
-	
 	@Override
 	public String toString() {
 		return "EtatCourant [posiTete=" + posiTete + ", sens=" + sens
-				+ ", viesseCourante=" + viesseCourante + ", monRail=" + monRail
-				+ "]";
+				+ ", vitesseCourante=" + vitesseCourante + ", monRail="
+				+ monRail + "]";
 	}
-	
 
-	
 }

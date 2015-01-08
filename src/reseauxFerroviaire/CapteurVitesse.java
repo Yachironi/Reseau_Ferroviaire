@@ -32,7 +32,7 @@ public class CapteurVitesse extends Capteur {
 	public void update() {
 		Train train = monRail.getTrainAt(position);
 		if (train != null) {
-			setVitesseTrain(train.getEtatTrain().getViesseCourante());
+			setVitesseTrain(train.getEtatTrain().getVitesseCourante());
 		} else {
 			setVitesseTrain(0);
 		}

@@ -5,15 +5,15 @@ import exception.CapteurExeption;
 public class CapteurPresence extends Capteur {
 
 	private boolean trainPresent;
-	
+
 	public CapteurPresence(int num, Rail rail) throws CapteurExeption {
 		super(num, rail);
-		trainPresent=false;
+		trainPresent = false;
 	}
-	
-	public CapteurPresence(){
+
+	public CapteurPresence() {
 		super();
-		trainPresent=false;
+		trainPresent = false;
 	}
 
 	public boolean isTrainPresent() {
@@ -21,20 +21,23 @@ public class CapteurPresence extends Capteur {
 	}
 
 	public void setTrainPresent(boolean trainPresent) {
-		this.trainPresent = trainPresent;
-		setChanged();
-		notifyObservers(this);
+		if (trainPresent == true) {
+			this.trainPresent = trainPresent;
+			setChanged();
+			notifyObservers(this);
+		} else {
+			this.trainPresent = trainPresent;
+		}
 	}
 
-
 	/**
-	 * Elle change la valeur du capteur lors du passage au dessus 
+	 * Elle change la valeur du capteur lors du passage au dessus
 	 */
 	@Override
 	public void update() {
-		if(monRail.getTrainAt(position)!=null){
+		if (monRail.getTrainAt(position) != null) {
 			setTrainPresent(true);
-		}else{
+		} else {
 			setTrainPresent(false);
 		}
 	}

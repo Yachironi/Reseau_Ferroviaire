@@ -26,7 +26,7 @@ public abstract class Capteur extends Observable {
 	 * @param position
 	 *            Le numéro de tronçon où le capteur va être placer
 	 * @param monRail
-	 *            le rail où le capteur va être placé
+	 *            le rail où le capteur va être placé le capteur
 	 * @throws CapteurExeption
 	 */
 	public Capteur(int position, Rail monRail) throws CapteurExeption {
