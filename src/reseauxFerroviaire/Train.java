@@ -101,10 +101,7 @@ public class Train {
 	}
 
 	/**
-	 * Avancer le train
-	 * 
-	 * @throws RailException
-	 * 
+	 * Permet le déplacement du temps
 	 */
 	public void avance() {
 		try {
@@ -115,6 +112,8 @@ public class Train {
 				etatTrain.decrementePos();
 			}
 			
+			
+			
 			// regarder les semaphores ? avant ? apres ? 			
 			
 		} catch (RailException e) {
@@ -122,6 +121,18 @@ public class Train {
 		}
 		
 		// On aura besoin de Capteur.update() à chaque avancement du train
+	}
+	
+	public static int getNbrInstance() {
+		return nbrInstance;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getvMax() {
+		return vMax;
 	}
 
 	public EtatCourant getEtatTrain() {
@@ -139,7 +150,10 @@ public class Train {
 	public void setLongueur(int longueur) {
 		this.longueur = longueur;
 	}
-	
+	/**
+	 * Permet de savoir quel est Rail suivant sur lequel le train doit passer
+	 * @return le rail 
+	 */
 	public Rail getRailSuivant(){
 		if(etatTrain.getSens().equals(Direction.AMONT)){
 			return etatTrain.getMonRail().getJonctionTete().getSuivant(etatTrain.getMonRail());
@@ -148,6 +162,17 @@ public class Train {
 			return etatTrain.getMonRail().getJonctionQueue().getSuivant(etatTrain.getMonRail());
 	}
 
+	@Override
+	public boolean equals(Object arg) {
+		if(arg==this)return true;
+		if(arg==null)return false;
+		try {
+			Train train = (Train) arg;
+			return this.id == train.getId();			
+		} catch (ClassCastException e) {
+			return false;
+		}
+	}
 
 	
 }
