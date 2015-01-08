@@ -90,9 +90,19 @@ public class Aiguillage extends Jonction {
 		return capteursPresence;
 	}
 	
-	protected void setSemaphoreConfiguration(ArrayList<EtatSemaphore> etatsSemaphore) throws EtatSemaphoreException{
+	protected void setSemaphoresConfiguration(ArrayList<EtatSemaphore> etatsSemaphore) throws EtatSemaphoreException{
 		for (int i = 0; i< listeRail.size();i++) {
 			listeRail.get(i).getSemaQueue().setEtat(etatsSemaphore.get(i));
 		}
 	}
+	
+	protected void setSemaphoreConfiguration(EtatSemaphore etatSemaphore,int railIndex) throws EtatSemaphoreException{
+		listeRail.get(railIndex).getSemaQueue().setEtat(etatSemaphore);
+	}
+
+	@Override
+	public String toString() {
+		return ("Aiguillage ["+getId()+"]");
+	}
+	
 }
