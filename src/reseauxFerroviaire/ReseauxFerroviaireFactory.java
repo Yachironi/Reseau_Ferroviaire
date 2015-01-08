@@ -2,14 +2,16 @@ package reseauxFerroviaire;
 
 import java.util.ArrayList;
 
+
+
 public class ReseauxFerroviaireFactory {
 	
-	/*
-	 * 
-	 */
+	final int minimum=10;
+	
 	public ArrayList<Rail> getSegment(int nombre, boolean buteeAmont, boolean buteeAval, int taille){
 		ArrayList <Rail> segment = new ArrayList<Rail>();
 		int tailleRail = (int) taille/nombre;
+		
 		for(int i=0; i<nombre;i++){
 			segment.add(new Rail(tailleRail));
 		}
@@ -30,18 +32,18 @@ public class ReseauxFerroviaireFactory {
 		return segment;
 	}
 	
-	/*public Aiguillage getAiguillage3Voies(ArrayList<Rail> connect){
-		if(connect.size()>=3){
+/*	public Aiguillage getAiguillage3Voies(){
+		ArrayList <Rail> connect = new ArrayList <Rail>();
+		connect.add(new Rail())
+		
 			
 		}
+		return new Aiguillage(listeRail, sortieAmont, sortieAval)
 	}
 	
 	public Aiguillage getAiguillage4Voies(){
 		if() 
 	}
-	*/
-	
-	
-	
+*/
 	
 }

@@ -22,6 +22,8 @@ public class Rail {
 		this.longueur = longueur;
 		trains = null;
 		capteurs = null;
+		semaTete=null;
+		semaQueue=null;
 	}
 
 	public static int getIdGen() {
@@ -189,8 +191,22 @@ public class Rail {
 	}
 
 	@Override
+	public boolean equals(Object arg) {
+		if (arg == this) return true;
+		if (arg == null) return false;
+		try {
+			Rail rail = (Rail) arg;
+			return rail.id == this.id;
+		} catch (ClassCastException e) {
+			return false;
+		}
+	}
+	
+	@Override
 	public String toString() {
 		return "Rail [id=" + id + ", longueur=" + longueur + ", trains="
 				+ trains + "]";
 	}
+	
+	
 }

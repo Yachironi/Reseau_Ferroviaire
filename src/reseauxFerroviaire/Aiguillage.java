@@ -27,8 +27,7 @@ public class Aiguillage extends Jonction {
 			this.sortie = sortieAval;
 	}
 	
-	
-	
+		
 	public void ajoutRail(Rail rail) throws AiguillageException {
 		if (listeRail.contains(rail)) {
 			throw new AiguillageException(
