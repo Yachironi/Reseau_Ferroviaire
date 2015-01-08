@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import exception.EtatSemaphoreException;
+
 public abstract class ElementRegulation implements Observer {
 
 	ArrayList<Capteur> capteurs;
@@ -26,11 +28,11 @@ public abstract class ElementRegulation implements Observer {
 			System.out
 					.println("Le capteur n'appartient pas à l'aguillage de l'element de regulation");
 
-		} else {
+		} else if(!capteur.getMonRail().equals(aiguillage.getSortie())) {
 			demandePassage(capteur.getMonRail());
 		}
 	}
 	protected abstract void demandePassage(Rail rail);
-	protected abstract void regulation(Rail rail);
+	protected abstract void regulation() throws EtatSemaphoreException;
 
 }

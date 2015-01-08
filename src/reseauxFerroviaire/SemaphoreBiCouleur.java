@@ -1,6 +1,7 @@
 package reseauxFerroviaire;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import exception.EtatSemaphoreException;
 
@@ -8,9 +9,14 @@ public class SemaphoreBiCouleur extends Semaphore {
 
 	public SemaphoreBiCouleur() {
 		super();
+		etatsPossibles = new ArrayList<EtatSemaphore>(Arrays.asList(
+				EtatSemaphoreRouge.getInstance(),
+				EtatSemaphoreVert.getInstance()));
+		etat = etatsPossibles.get(0);
 	}
 
-	public SemaphoreBiCouleur(EtatSemaphoreBiCouleur etat, Direction sens, int position) {
+	public SemaphoreBiCouleur(EtatSemaphore etat, Direction sens,
+			int position) {
 		super(etat, sens, position);
 	}
 
@@ -18,16 +24,8 @@ public class SemaphoreBiCouleur extends Semaphore {
 		return this.etat.getRatioRalentissement();
 	}
 
-	public void setEtat(EtatSemaphoreBiCouleur etat)
-			throws EtatSemaphoreException {
-		if (this.etat.equals(etat.getSuivant())) {
-			this.etat = etat;
-		} else {
-			throw new EtatSemaphoreException("Changement d'etat incoherent");
-		}
-	}
-	
-	
+
+
 	/*
 	 * equals de EtatSemaphoreBiCouleur
 	 */
