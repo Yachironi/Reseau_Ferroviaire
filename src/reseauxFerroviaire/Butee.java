@@ -12,7 +12,7 @@ public class Butee extends Jonction {
 		rail = null;
 	}
 	/**
-	 * Constructeur d'une 
+	 * Constructeur d'une butee parametre
 	 * @param rail
 	 */
 	public Butee(Rail rail) {
