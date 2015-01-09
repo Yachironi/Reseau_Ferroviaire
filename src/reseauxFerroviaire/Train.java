@@ -22,6 +22,7 @@ public class Train implements Runnable {
 	 * @throws TrainException 
 	 * @throws RailException 
 	 */
+
 	public Train(int longueur, int vMax, Rail rail, Direction sens) throws TrainException {
 		nbrInstance++;
 		// Géneration automatique d'identificateur
@@ -37,6 +38,12 @@ public class Train implements Runnable {
 			this.vMax = vMax;
 			if (!(longueur > rail.getLongueur())) {
 				this.etatTrain = new EtatCourant(longueur, rail, sens, vMax);
+				try {
+					this.etatTrain.getMonRail().addTrain(this);
+				} catch (RailException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else {
 				throw new TrainException("Instanciation du train impossible");
 			}
@@ -167,7 +174,6 @@ public class Train implements Runnable {
 							etatTrain.getMonRail().addTrain(this);
 						}
 					}
-
 				}
 			}
 			 System.out.println(toString());
@@ -241,8 +247,9 @@ public class Train implements Runnable {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(1000);
+			
 			while (true) {
+				Thread.sleep(2000);
 				deplacer();
 			}
 		} catch (InterruptedException e) {

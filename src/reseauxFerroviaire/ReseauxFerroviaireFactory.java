@@ -16,7 +16,7 @@ public class ReseauxFerroviaireFactory {
 	 * @param buteeAmont il y a une buteé au début du segment ou pas
 	 * @param buteeAval il y a une buteé à la fin du segment ou pas
 	 * @param taille
-	 * @return
+	 * @return 
 	 */
 	public static ArrayList<Rail> getSegment(int nombre, boolean buteeAmont,
 			boolean buteeAval, int taille) {
@@ -54,10 +54,10 @@ public class ReseauxFerroviaireFactory {
 	 *            longueur des rail
 	 * @return Aiguillage crée selon le nombre de rail et leur longeur donnée avec deux capteur
 	 * @throws FactoryException
-	 * @throws CapteurExeption 
+	 * @throws CapteurExeption  
 	 */
 	public static Aiguillage getAiguillage(int nbr, int longueur)
-			throws FactoryException, CapteurExeption {
+			throws FactoryException, CapteurExeption{
 		if (nbr > 2) {
 			ArrayList<Rail> listeRail = new ArrayList<Rail>();
 			Aiguillage aiguillage = new Aiguillage(listeRail, null, null);
@@ -155,6 +155,25 @@ public class ReseauxFerroviaireFactory {
 			aiguillage.getListCapteurPresence().get(i).addObserver(elementRegulation);	
 		}
 		return elementRegulation;
+	}
+	
+	/**
+	 * Permet de faire l'union de deux segment, on leur appliquant une jonction simple 
+	 * Prend en parametre les deux listes dont il faut faire l'union
+	 * Return une liste regroupant les deux listes
+	 * @param list1
+	 * @param list2
+	 * @return
+	 */
+	public static ArrayList<Rail> getUnionSegment(ArrayList<Rail> list1, ArrayList<Rail> list2){
+		
+		ArrayList<Rail> unionSegment = new ArrayList<Rail>();
+		Jonction union = new JonctionSimple(list1.get(list1.size()-1),list2.get(0));
+		list1.get(list1.size()-1).setJonctionQueue(union);
+		list2.get(0).setJonctionTete(union);
+		unionSegment.addAll(list1);
+		unionSegment.addAll(list2);
+		return unionSegment;
 	}
 	
 	

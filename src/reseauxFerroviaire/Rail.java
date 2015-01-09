@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import exception.RailException;
+import exception.TrainException;
 
 public class Rail {
 
@@ -17,16 +18,29 @@ public class Rail {
 	private Semaphore semaTete;
 	private Semaphore semaQueue;
 	
-	public Rail(int longueur) {
+	/**
+	 * Constructeur 
+	 * Ce constructeur ne prend en paramètre que la taille de la rail
+	 * @param longueur
+	 * 
+	 */
+	public Rail(int longueur)  {
 		this.id = idGen++;
 		this.longueur = longueur;
-		trains = null;
 		capteurs = null;
 		semaTete= null;
 		semaQueue=null;
 	}
 
-
+	/**
+	 * Constructeur avec des parametres
+	 * @param longueur :longuer de la rail
+	 * @param capteurs : liste des capteurs presents sur la rail
+	 * @param jonctionTete : jonction se trouvant au niveau de la tete
+	 * @param jonctionQueue : jonction se trouvant au niveau de la queue
+	 * @param semaTete : semaphore se trouvant au niveau de la tete
+	 * @param semaQueue : semaphore se trouvant au niveau de la queue
+	 */
 	public Rail(int longueur, ArrayList<Capteur> capteurs,
 			Jonction jonctionTete, Jonction jonctionQueue, Semaphore semaTete,
 			Semaphore semaQueue) {
@@ -79,7 +93,12 @@ public class Rail {
 	public void setTrains(ArrayList<Train> trains) {
 		this.trains = trains;
 	}
-
+	/**
+	 * Methode retournant la longueur effective de la rail, 
+	 * c'est a dire, l'espace disponible apres avoir ajouter la taille de l'ensemble des trains present sur 
+	 * un rail
+	 * @return un int correspondant a lespace occupe
+	 */
 	public int getLongeurEffective() {
 		int longueurEffective = 0;
 		for (Iterator iterator = trains.iterator(); iterator.hasNext();) {
@@ -88,8 +107,17 @@ public class Rail {
 		}
 		return longueurEffective;
 	}
-
+	/**
+	 * Methode permettant d'ajouter un train a la liste des trains du rail 
+	 * @param train
+	 * @throws RailException
+	 */
 	public void addTrain(Train train) throws RailException {
+		
+		if(trains == null){
+			trains = new ArrayList<Train>();
+		}
+		
 		if (((trains.size() == 0) || ((trains.get(0).getEtatTrain().getSens() == train
 				.getEtatTrain().getSens())))
 				&& ((this.getLongeurEffective() + train.getLongueur()) <= this.longueur)) {
@@ -98,7 +126,11 @@ public class Rail {
 			throw new RailException("Longueur de rail dépassé");
 		}
 	}
-
+	/**
+	 * Perme de supprimer un train present sur cet rail
+	 * Prend en parametre le train a supprimer
+	 * @param train
+	 */
 	public void removeTrain(Train train) {
 		if (trains.contains(train)) {
 			trains.remove(train);
