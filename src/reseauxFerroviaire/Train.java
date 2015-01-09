@@ -121,7 +121,6 @@ public class Train {
 				recule();
 			}
 
-
 		} catch (RailException e) {
 			System.out.println(e.getMessage());
 		}
@@ -170,181 +169,190 @@ public class Train {
 			return etatTrain.getMonRail().getJonctionQueue()
 					.getSuivant(etatTrain.getMonRail());
 	}
-	
-	
-	/*public boolean getTQTQ(EtatCourant t1, EtatCourant t2){
-		t2.setMonRail(t1.getMonRail().getJonctionQueue().getSuivant(t1.getMonRail()));
-		if(t1.getMonRail().getJonctionQueue().getId()== t2.getMonRail().getJonctionTete().getId())
+
+	/*
+	 * public boolean getTQTQ(EtatCourant t1, EtatCourant t2){
+	 * t2.setMonRail(t1.getMonRail
+	 * ().getJonctionQueue().getSuivant(t1.getMonRail()));
+	 * if(t1.getMonRail().getJonctionQueue().getId()==
+	 * t2.getMonRail().getJonctionTete().getId()) return true; else return
+	 * false; }
+	 * 
+	 * public boolean getTQQT(EtatCourant t1, EtatCourant t2){
+	 * t2.setMonRail(t1.getMonRail
+	 * ().getJonctionQueue().getSuivant(t1.getMonRail()));
+	 * if(t1.getMonRail().getJonctionQueue().getId()==
+	 * t2.getMonRail().getJonctionQueue().getId()) return true; else return
+	 * false; }
+	 * 
+	 * public boolean getQTQT(EtatCourant t1, EtatCourant t2){
+	 * t2.setMonRail(t1.getMonRail
+	 * ().getJonctionTete().getSuivant(t1.getMonRail()));
+	 * if(t1.getMonRail().getJonctionTete().getId()==
+	 * t2.getMonRail().getJonctionQueue().getId()) return true; else return
+	 * false; }
+	 * 
+	 * public boolean getQTTQ(EtatCourant t1, EtatCourant t2){
+	 * t2.setMonRail(t1.getMonRail
+	 * ().getJonctionTete().getSuivant(t1.getMonRail()));
+	 * if(t1.getMonRail().getJonctionTete().getId()==
+	 * t2.getMonRail().getJonctionTete().getId()) return true; else return
+	 * false; }
+	 */
+
+	public boolean getTQ(EtatCourant t1, EtatCourant t2) {
+		Rail r1 = t1.getMonRail();
+		t2.setMonRail(t1.getMonRail().getJonctionTete().getSuivant(r1));
+		if (t1.getMonRail().getJonctionTete().getId() == t2.getMonRail()
+				.getJonctionQueue().getId())
 			return true;
-		else return false;	
+		else
+			return false;
 	}
 
-	public boolean getTQQT(EtatCourant t1, EtatCourant t2){
-		t2.setMonRail(t1.getMonRail().getJonctionQueue().getSuivant(t1.getMonRail()));
-		if(t1.getMonRail().getJonctionQueue().getId()== t2.getMonRail().getJonctionQueue().getId())
+	public boolean getQT(EtatCourant t1, EtatCourant t2) {
+		Rail r1 = t1.getMonRail();
+		t2.setMonRail(t1.getMonRail().getJonctionQueue().getSuivant(r1));
+		if (t1.getMonRail().getJonctionQueue().getId() == t2.getMonRail()
+				.getJonctionTete().getId())
 			return true;
-		else return false;
-	}
-	
-	public boolean getQTQT(EtatCourant t1, EtatCourant t2){
-		t2.setMonRail(t1.getMonRail().getJonctionTete().getSuivant(t1.getMonRail()));
-		if(t1.getMonRail().getJonctionTete().getId()== t2.getMonRail().getJonctionQueue().getId())
-			return true;
-		else return false;
-	}
-	
-	public boolean getQTTQ(EtatCourant t1, EtatCourant t2){
-		t2.setMonRail(t1.getMonRail().getJonctionTete().getSuivant(t1.getMonRail()));
-		if(t1.getMonRail().getJonctionTete().getId()== t2.getMonRail().getJonctionTete().getId())
-		return true;
-		else return false;
-	}
-	*/
-	
-	
-	public boolean getTQ(EtatCourant t1, EtatCourant t2){
-		Rail r1 = t1.getMonRail();
-		t2.setMonRail(t1.getMonRail().getJonctionTete().getSuivant(r1));	
-		if(t1.getMonRail().getJonctionTete().getId()== t2.getMonRail().getJonctionQueue().getId())
-				return true;
-		else return false;
-	}
-	
-	public boolean getQT(EtatCourant t1, EtatCourant t2){
-		Rail r1 = t1.getMonRail();
-		t2.setMonRail(t1.getMonRail().getJonctionQueue().getSuivant(r1));	
-		if(t1.getMonRail().getJonctionQueue().getId()== t2.getMonRail().getJonctionTete().getId())
-				return true;
-		else return false;
-	}
-	
-	public boolean getTT(EtatCourant t1, EtatCourant t2){
-		Rail r1 = t1.getMonRail();
-		t2.setMonRail(t1.getMonRail().getJonctionTete().getSuivant(r1));	
-		if(t1.getMonRail().getJonctionTete().getId()== t2.getMonRail().getJonctionTete().getId())
-				return true;
-		else return false;
-	}
-	
-	public boolean getQQ(EtatCourant t1, EtatCourant t2){
-		Rail r1 = t1.getMonRail();
-		t2.setMonRail(t1.getMonRail().getJonctionQueue().getSuivant(r1));	
-			if(t1.getMonRail().getJonctionQueue().getId()== t2.getMonRail().getJonctionQueue().getId())
-				return true;
-		else return false;
+		else
+			return false;
 	}
 
-	public boolean getTQRail(){
-		if(etatTrain.getMonRail().getJonctionQueue().getId()==
-				etatTrain.getMonRail().getJonctionQueue().getSuivant(etatTrain.getMonRail()).getJonctionQueue().getId()
-			|| 	etatTrain.getMonRail().getJonctionQueue().getId()==
-					etatTrain.getMonRail().getJonctionQueue().getSuivant(etatTrain.getMonRail()).getJonctionTete().getId())
+	public boolean getTT(EtatCourant t1, EtatCourant t2) {
+		Rail r1 = t1.getMonRail();
+		t2.setMonRail(t1.getMonRail().getJonctionTete().getSuivant(r1));
+		if (t1.getMonRail().getJonctionTete().getId() == t2.getMonRail()
+				.getJonctionTete().getId())
 			return true;
-		else return false;
-	
+		else
+			return false;
 	}
-	
-	
-	public boolean getQTRail(){
-		if(etatTrain.getMonRail().getJonctionTete().getId()==
-				etatTrain.getMonRail().getJonctionTete().getSuivant(etatTrain.getMonRail()).getJonctionTete().getId()
-			|| 	etatTrain.getMonRail().getJonctionTete().getId()==
-					etatTrain.getMonRail().getJonctionTete().getSuivant(etatTrain.getMonRail()).getJonctionQueue().getId())
+
+	public boolean getQQ(EtatCourant t1, EtatCourant t2) {
+		Rail r1 = t1.getMonRail();
+		t2.setMonRail(t1.getMonRail().getJonctionQueue().getSuivant(r1));
+		if (t1.getMonRail().getJonctionQueue().getId() == t2.getMonRail()
+				.getJonctionQueue().getId())
 			return true;
-		else return false;
+		else
+			return false;
 	}
+
+	public boolean getTQRail() {
+		if (etatTrain.getMonRail().getJonctionQueue().getId() == etatTrain
+				.getMonRail().getJonctionQueue()
+				.getSuivant(etatTrain.getMonRail()).getJonctionQueue().getId()
+				|| etatTrain.getMonRail().getJonctionQueue().getId() == etatTrain
+						.getMonRail().getJonctionQueue()
+						.getSuivant(etatTrain.getMonRail()).getJonctionTete()
+						.getId())
+			return true;
+		else
+			return false;
+
+	}
+
+	public boolean getQTRail() {
+		if (etatTrain.getMonRail().getJonctionTete().getId() == etatTrain
+				.getMonRail().getJonctionTete()
+				.getSuivant(etatTrain.getMonRail()).getJonctionTete().getId()
+				|| etatTrain.getMonRail().getJonctionTete().getId() == etatTrain
+						.getMonRail().getJonctionTete()
+						.getSuivant(etatTrain.getMonRail()).getJonctionQueue()
+						.getId())
+			return true;
+		else
+			return false;
+	}
+
 	public void avance() throws RailException {
-
-				EtatCourant courant = etatTrain;
-				EtatCourant suivant = courant;
-				EtatCourant temp = courant;
-				// reste à parcourir
-				
-				int restant = courant.getVitesseCourante()
-						- (courant.getMonRail().getLongueur() - courant
-								.getPosiTete());
-				
-				if(getTQRail()){
-				suivant.setMonRail(courant.getMonRail().getJonctionQueue()
-						.getSuivant(courant.getMonRail()));
-				}else if(getQTRail()){
-					suivant.setMonRail(courant.getMonRail().getJonctionTete()
-							.getSuivant(courant.getMonRail()));
-				}		
-				restant = restant - suivant.getMonRail().getLongueur();
-				courant = suivant;
-				while (restant > 0) {
-					temp = suivant;
-						if( getQT(courant, temp) || getTT(courant, temp)){
-						
-						suivant.setMonRail(courant.getMonRail()
-								.getJonctionQueue()
-								.getSuivant(courant.getMonRail()));
-						restant = restant - suivant.getMonRail().getLongueur();
-						courant = suivant;
-						courant.setPosiTete(restant
-								+ courant.getMonRail().getLongueur());
-
-					} else if (
-						getQQ(courant, temp) || getTQ(courant, temp)){ 
-						
-						
-						suivant.setMonRail(courant.getMonRail()
-								.getJonctionTete()
-								.getSuivant(courant.getMonRail()));
-						courant = suivant;
-						courant.setPosiTete(courant.getMonRail().getLongueur()
-								- restant + 1);
-						restant = restant - suivant.getMonRail().getLongueur();
-					}
-				}
-			}
-
-	public void recule() throws RailException {
 
 		EtatCourant courant = etatTrain;
 		EtatCourant suivant = courant;
+		EtatCourant temp = courant;
 		// reste à parcourir
-		int restant = courant.getVitesseCourante()
-				- courant.getPosiTete();
+
 		
-		/*if (courant.getMonRail().getJonctionQueue().getId() == 
-				
-				
-				suivant
-				.getMonRail().getJonctionTete().getId()
-				|| courant.getMonRail().getJonctionTete().getId() == suivant
-						.getMonRail().getJonctionTete().getId()) {
+		
+		
+		int restant = courant.getVitesseCourante()
+				- (courant.getMonRail().getLongueur() - courant.getPosiTete());
+		
+		if(restant <= 0){
+			courant.setPosiTete(courant.getPosiTete() + courant.getVitesseCourante());
+			etatTrain = courant;
+		}
+		
+		
+	/*	if(getQTRail()){
+			
+			int restant = courant.getVitesseCourante()
+					- (courant.getMonRail().getLongueur() - courant.getPosiTete());
+			restant = restant + 1;
+			
+		}
+		/*if(restant >0){
+		
+		
+			suivant.setMonRail(courant.getMonRail().getJonctionQueue()
+					.getSuivant(courant.getMonRail()));
+			restant = restant - suivant.getMonRail().getLongueur();
+			courant = suivant;
+			
+			if(restant <= 0){
+				if(restant==0){
+					//courant.setPosiTete(courant.)
+				}
+				courant.setPosiTete(courant.getMonRail().getLongueur() + restant -1);
+			}
+			
+			
+		} else if (getQTRail()) {
+			suivant.setMonRail(courant.getMonRail().getJonctionTete()
+					.getSuivant(courant.getMonRail()));
+			restant = restant - suivant.getMonRail().getLongueur();
+			courant = suivant;
+			
+		}
+		
+		
+		
 		
 		*/
 		
-		
-		suivant.setMonRail(courant.getMonRail().getJonctionTete()
-				.getSuivant(courant.getMonRail()));
-		restant = restant - suivant.getMonRail().getLongueur();
-
 		while (restant > 0) {
-			if (courant.getMonRail().getJonctionQueue().getId() == suivant
-					.getMonRail().getJonctionTete().getId()
-					|| courant.getMonRail().getJonctionTete().getId() == suivant
-							.getMonRail().getJonctionTete().getId()) {
-				// increment: continue à incrementer
-				suivant.setMonRail(courant.getMonRail()
-						.getJonctionQueue()
+			temp = suivant;
+			if (getQT(courant, temp)) {
+				suivant.setMonRail(courant.getMonRail().getJonctionQueue()
 						.getSuivant(courant.getMonRail()));
 				restant = restant - suivant.getMonRail().getLongueur();
 				courant = suivant;
 				courant.setPosiTete(restant
 						+ courant.getMonRail().getLongueur());
+				
+			}	
+			else if(getTT(courant, temp)){
+					suivant.setMonRail(courant.getMonRail().getJonctionTete()
+							.getSuivant(courant.getMonRail()));
+					restant = restant - suivant.getMonRail().getLongueur();
+					courant = suivant;
+					courant.setPosiTete(restant
+							+ courant.getMonRail().getLongueur());				
+				
+			} else if (getQQ(courant, temp)) {
 
-			} else if (courant.getMonRail().getJonctionQueue()
-					.getId() == suivant.getMonRail().getJonctionQueue()
-					.getId()
-					|| courant.getMonRail().getJonctionTete().getId() == suivant
-							.getMonRail().getJonctionQueue().getId()) {
-				// decrement à partir de la position du tete du train
-				suivant.setMonRail(courant.getMonRail()
-						.getJonctionTete()
+				suivant.setMonRail(courant.getMonRail().getJonctionQueue()
+						.getSuivant(courant.getMonRail()));
+				courant = suivant;
+				courant.setPosiTete(courant.getMonRail().getLongueur()
+						- restant + 1);
+				restant = restant - suivant.getMonRail().getLongueur();
+			}
+			else if(getTQ(courant, temp)){
+				
+				suivant.setMonRail(courant.getMonRail().getJonctionTete()
 						.getSuivant(courant.getMonRail()));
 				courant = suivant;
 				courant.setPosiTete(courant.getMonRail().getLongueur()
@@ -353,7 +361,53 @@ public class Train {
 			}
 		}
 	}
-	
+
+
+	public void recule() throws RailException {
+
+		EtatCourant courant = etatTrain;
+		EtatCourant suivant = courant;
+		EtatCourant temp = courant;
+		// reste à parcourir
+		int restant = courant.getVitesseCourante() - courant.getPosiTete();
+
+		
+		if (getQTRail()) {
+			suivant.setMonRail(courant.getMonRail().getJonctionQueue()
+					.getSuivant(courant.getMonRail()));
+		} else if (getTQRail()) {
+			suivant.setMonRail(courant.getMonRail().getJonctionTete()
+					.getSuivant(courant.getMonRail()));
+		}
+		
+		restant = restant - suivant.getMonRail().getLongueur();
+
+		while (restant < 0) {
+			temp = suivant;
+			if (getQT(courant, temp) || getTT(courant, temp))
+			{
+				// increment: continue à incrementer
+				suivant.setMonRail(courant.getMonRail().getJonctionQueue()
+						.getSuivant(courant.getMonRail()));
+				restant = restant - suivant.getMonRail().getLongueur();
+				courant = suivant;
+				courant.setPosiTete(restant
+						+ courant.getMonRail().getLongueur());
+
+		} else if (courant.getMonRail().getJonctionQueue().getId() == suivant
+					.getMonRail().getJonctionQueue().getId()
+					|| courant.getMonRail().getJonctionTete().getId() == suivant
+							.getMonRail().getJonctionQueue().getId()) {
+				// decrement à partir de la position du tete du train
+				suivant.setMonRail(courant.getMonRail().getJonctionTete()
+						.getSuivant(courant.getMonRail()));
+				courant = suivant;
+				courant.setPosiTete(courant.getMonRail().getLongueur()
+						- restant + 1);
+				restant = restant - suivant.getMonRail().getLongueur();
+			}
+		}
+	}
 
 	@Override
 	public boolean equals(Object arg) {
