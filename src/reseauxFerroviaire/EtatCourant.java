@@ -8,6 +8,13 @@ public class EtatCourant {
 	private int vitesseCourante;
 	private Rail monRail;
 
+	/**
+	 * Constructeur 
+	 * @param position : position de la tete du train 
+	 * @param rail : rail sur lequel est positionne le rail 
+	 * @param sens : sens direction du train
+	 * @param vmax : vitesse maximale du train
+	 */
 	public EtatCourant(int position, Rail rail, Direction sens, int vmax) {
 		this.sens = sens;
 		this.vitesseCourante = vmax; 
@@ -46,17 +53,6 @@ public class EtatCourant {
 	public void setMonRail(Rail monRail) {
 		posiTete = 0;
 		this.monRail = monRail;
-	}
-
-	
-
-	public void decrementePos() throws RailException {
-		if (posiTete - vitesseCourante > 0) {
-			posiTete -= vitesseCourante;
-		} else {
-			throw new RailException("Depassement de rail");
-		}
-
 	}
 
 	@Override

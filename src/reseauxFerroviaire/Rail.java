@@ -30,6 +30,7 @@ public class Rail {
 		capteurs = null;
 		semaTete= null;
 		semaQueue=null;
+		trains = new ArrayList<Train>();
 	}
 
 	/**
@@ -87,7 +88,11 @@ public class Rail {
 	}
 
 	public ArrayList<Train> getTrains() {
-		return trains;
+		if(trains == null) {
+			trains = new ArrayList<Train>();
+			return trains;
+		}
+		else return trains;
 	}
 
 	public void setTrains(ArrayList<Train> trains) {
@@ -113,11 +118,6 @@ public class Rail {
 	 * @throws RailException
 	 */
 	public void addTrain(Train train) throws RailException {
-		
-		if(trains == null){
-			trains = new ArrayList<Train>();
-		}
-		
 		if (((trains.size() == 0) || ((trains.get(0).getEtatTrain().getSens() == train
 				.getEtatTrain().getSens())))
 				&& ((this.getLongeurEffective() + train.getLongueur()) <= this.longueur)) {
@@ -136,6 +136,7 @@ public class Rail {
 			trains.remove(train);
 		}
 	}
+	
 
 	/**
 	 * Retourne s'il existe le train à la position donnée , si non elle renvoi

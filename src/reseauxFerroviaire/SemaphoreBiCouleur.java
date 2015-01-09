@@ -26,8 +26,5 @@ public class SemaphoreBiCouleur extends Semaphore {
 
 
 
-	/*
-	 * equals de EtatSemaphoreBiCouleur
-	 */
 
 }

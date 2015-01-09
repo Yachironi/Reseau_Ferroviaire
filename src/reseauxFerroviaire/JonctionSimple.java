@@ -4,13 +4,22 @@ public class JonctionSimple extends Jonction{
 
 	private Rail amont;
 	private Rail aval; 
-	
+
+	/**
+	 * Constructeur sans parametre 
+	 * 
+	 */
 	public JonctionSimple(){
 		super();
 		this.amont=null;
 		this.aval=null;
 	}
 	
+	/**
+	 * Constructeur avec parametre 
+	 * @param amont : rail en amont de la jonction simple
+	 * @param aval : rail en aval de ja jonction simple
+	 */
 	public JonctionSimple(Rail amont, Rail aval){
 		this.amont=amont;
 		this.aval=aval;

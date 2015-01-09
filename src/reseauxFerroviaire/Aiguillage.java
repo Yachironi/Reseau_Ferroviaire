@@ -80,7 +80,10 @@ public class Aiguillage extends Jonction {
 	public void setListeRail(ArrayList<Rail> listeRail) {
 		this.listeRail = listeRail;
 	}
-
+	/**
+	 * 
+	 * @return l'ensemble des capteurs present sur la rail
+	 */
 	public ArrayList<CapteurPresence> getListCapteurPresence() {
 		ArrayList<CapteurPresence> capteursPresence = new ArrayList<>();
 		for (Iterator iterator = listeRail.iterator(); iterator.hasNext();) {
@@ -89,13 +92,23 @@ public class Aiguillage extends Jonction {
 		}
 		return capteursPresence;
 	}
-	
+	/**
+	 * Permet de modifier les etats des different semaphores a l'aide d'une liste contenant divers etats possibles
+	 * @param etatsSemaphore
+	 * @throws EtatSemaphoreException
+	 */
 	protected void setSemaphoresConfiguration(ArrayList<EtatSemaphore> etatsSemaphore) throws EtatSemaphoreException{
 		for (int i = 0; i< listeRail.size();i++) {
 			listeRail.get(i).getSemaQueue().setEtat(etatsSemaphore.get(i));
 		}
 	}
-	
+	/**
+	 * Modifie l'etat d'un semaphore 
+	 * @param etatSemaphore : etat du sempahore que l'on veut passer
+	 * @param railIndex : index de la rail sur lequel il est present
+	 * @param id : identifiant du semaphore a modifier
+	 * @throws EtatSemaphoreException
+	 */
 	protected void setSemaphoreConfiguration(EtatSemaphore etatSemaphore,int railIndex,int id) throws EtatSemaphoreException{
 		listeRail.get(railIndex).getSemaQueue().setEtat(etatSemaphore);
 		if(listeRail.get(railIndex).getJonctionTete().getId()==id){

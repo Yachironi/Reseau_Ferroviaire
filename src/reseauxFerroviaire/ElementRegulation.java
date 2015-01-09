@@ -52,10 +52,10 @@ public class ElementRegulation implements Observer {
 	}
 
 	/**
-	 * Ajoute de demande de passage venant du rail d'entrée
+	 * Ajout de demande de passage venant du rail d'entrée
 	 * 
-	 * @param rail
-	 *            Rail ou il y a une demande de passage
+	 * @param rail : Rail ou il y a une demande de passage
+	 *            
 	 */
 	protected void demandePassage(Rail rail) {
 		demandes.add(rail);

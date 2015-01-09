@@ -24,8 +24,5 @@ public class SemaphoreTriCouleur extends Semaphore {
 		return this.etat.getRatioRalentissement();
 	}
 	
-	/*
-	 * equals de EtatSemaphoreTriCouleur
-	 */
 
 }

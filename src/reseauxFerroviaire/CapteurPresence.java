@@ -6,11 +6,19 @@ public class CapteurPresence extends Capteur {
 
 	private boolean trainPresent;
 
+	/**
+	 * Constructeur CapteurPresence 
+	 * @param num : position sur le Rail, correspond au numero du traçon correspondant
+	 * @param rail : rail sur lequel est posittionne le capteur
+	 * @throws CapteurExeption
+	 */
 	public CapteurPresence(int num, Rail rail) throws CapteurExeption {
 		super(num, rail);
 		trainPresent = false;
 	}
-
+	/**
+	 * Constructeur de CapteurPresence
+	 */
 	public CapteurPresence() {
 		super();
 		trainPresent = false;
@@ -31,7 +39,7 @@ public class CapteurPresence extends Capteur {
 	}
 
 	/**
-	 * Elle change la valeur du capteur lors du passage au dessus
+	 * Elle change la valeur du capteur lors du passage par dessus
 	 */
 	@Override
 	public void update() {

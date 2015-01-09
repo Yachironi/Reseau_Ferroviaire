@@ -11,6 +11,7 @@ public class Train implements Runnable {
 	private int longueur; // Taile du train en nombre de trançon
 	private int vMax; // Vitesse maximale du train
 	private EtatCourant etatTrain;
+	private Rail rail;
 
 	/**
 	 * Constructeur de train avec un état
@@ -36,14 +37,11 @@ public class Train implements Runnable {
 		} else {
 			this.longueur = longueur;
 			this.vMax = vMax;
+			this.rail =rail;
 			if (!(longueur > rail.getLongueur())) {
 				this.etatTrain = new EtatCourant(longueur, rail, sens, vMax);
-				try {
-					this.etatTrain.getMonRail().addTrain(this);
-				} catch (RailException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				etatTrain.getMonRail().getTrains().add(this);
+
 			} else {
 				throw new TrainException("Instanciation du train impossible");
 			}
@@ -87,7 +85,6 @@ public class Train implements Runnable {
 		} else {
 			throw new TrainException("Vitesse non cohérente");
 		}
-
 	}
 
 	public void setvMax(int vMax) {
@@ -121,6 +118,9 @@ public class Train implements Runnable {
 
 	/**
 	 * Permet le déplacement du train
+	 * On regarde si le deplacment sur la même rail est possible. 
+	 * Dans le cas contraire, on ira regarder au niveau de l'arrete suivante, 
+	 * c'est a dire, la rail qui est relie avec la rail courante
 	 */
 	public void deplacer() {
 		try {
@@ -158,7 +158,8 @@ public class Train implements Runnable {
 				if (valAParcourir > 0) {
 						
 					if(getRailSuivant() != null)
-							etatTrain.setMonRail(getRailSuivant());
+						etatTrain.setMonRail(getRailSuivant());
+	
 					
 					boolean avancer = true;
 					while (avancer) {
@@ -203,7 +204,7 @@ public class Train implements Runnable {
 	public void setEtatTrain(EtatCourant etatTrain) {
 		this.etatTrain = etatTrain;
 	}
-
+	
 	public int getLongueur() {
 		return longueur;
 	}

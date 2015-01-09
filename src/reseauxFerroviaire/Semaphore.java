@@ -39,6 +39,13 @@ public abstract class Semaphore {
 			return etatsPossibles.get(0);
 		}
 	}
+	/**
+	 * Changement de l'etat du semaphore
+	 * Le nouvel etat doit cependant correspondre a l'etat suivant de l'etat actuel
+	 * dans le cas contraire
+	 * @param etat
+	 * @throws EtatSemaphoreException
+	 */
 	public void setEtat(EtatSemaphore etat)
 			throws EtatSemaphoreException {
 		if (!this.etat.equals(etat)&&this.etat.equals(getEtatSuivant())) {

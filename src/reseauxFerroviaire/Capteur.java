@@ -56,7 +56,7 @@ public abstract class Capteur extends Observable {
 	}
 
 	/**
-	 * Elle change la valeur du capteur lors du passage au dessus
+	 * Elle change la valeur du capteur lors du passage par dessus
 	 */
 	abstract public void update();
 

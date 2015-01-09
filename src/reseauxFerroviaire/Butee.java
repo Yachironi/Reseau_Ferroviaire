@@ -4,13 +4,19 @@ import exception.RailException;
 
 public class Butee extends Jonction {
 	private Rail rail;
-
+	/**
+	 * Constructeur d'une butee
+	 */
 	public Butee() {
 		super();
 		rail = null;
 	}
-
+	/**
+	 * Constructeur d'une 
+	 * @param rail
+	 */
 	public Butee(Rail rail) {
+		super();
 		this.rail = rail;
 	}
 
@@ -23,8 +29,11 @@ public class Butee extends Jonction {
 	}
 
 	@Override
+	/**
+	 * Le principe d'une butee etant la fin d'une rail, il n'y a pas de rail suivant
+	 */
 	public Rail getSuivant(Rail rail) throws RailException {
-		throw new RailException("Deraillement pour cause d'un butee presente");
+		throw new RailException("Deraillement pour cause de presence de butee");
 	}
 
 }
