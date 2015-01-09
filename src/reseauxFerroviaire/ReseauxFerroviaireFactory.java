@@ -2,6 +2,7 @@ package reseauxFerroviaire;
 
 import java.util.ArrayList;
 
+import exception.CapteurExeption;
 import exception.FactoryException;
 
 public class ReseauxFerroviaireFactory {
@@ -17,7 +18,7 @@ public class ReseauxFerroviaireFactory {
 	 * @param taille
 	 * @return
 	 */
-	public ArrayList<Rail> getSegment(int nombre, boolean buteeAmont,
+	public static ArrayList<Rail> getSegment(int nombre, boolean buteeAmont,
 			boolean buteeAval, int taille) {
 		ArrayList<Rail> segment = new ArrayList<Rail>();
 		int tailleRail = (int) taille / nombre;
@@ -50,11 +51,12 @@ public class ReseauxFerroviaireFactory {
 	 *            nombre de rails gérer par cette aiguillage
 	 * @param longueur
 	 *            longueur des rail
-	 * @return Aiguillage crée selon le nombre de rail et leur longeur donnée
+	 * @return Aiguillage crée selon le nombre de rail et leur longeur donnée avec deux capteur
 	 * @throws FactoryException
+	 * @throws CapteurExeption 
 	 */
 	public static Aiguillage getAiguillage(int nbr, int longueur)
-			throws FactoryException {
+			throws FactoryException, CapteurExeption {
 		if (nbr > 2) {
 			ArrayList<Rail> listeRail = new ArrayList<Rail>();
 			Aiguillage aiguillage = new Aiguillage(listeRail, null, null);
@@ -71,6 +73,12 @@ public class ReseauxFerroviaireFactory {
 				rail.setEtatSemaTete(semaTete);
 				rail.setJonctionQueue(aiguillage);
 				rail.setJonctionTete(new Butee(rail));
+				CapteurPresence capteurPresenceTete = new CapteurPresence(1,rail);
+				CapteurPresence capteurPresenceQueue = new CapteurPresence(longueur,rail);
+				ArrayList<Capteur> listeCapteur = new ArrayList<>();
+				listeCapteur.add(capteurPresenceQueue);
+				listeCapteur.add(capteurPresenceTete);
+				rail.setCapteurs(listeCapteur);
 				listeRail.add(rail);
 			}
 			aiguillage.setListeRail(listeRail);
@@ -87,13 +95,20 @@ public class ReseauxFerroviaireFactory {
 	 * 
 	 * @return Aiguillage crée
 	 * @throws FactoryException
+	 * @throws CapteurExeption 
 	 */
-	public static Aiguillage getAiguillageTriRail() throws FactoryException {
+	public static Aiguillage getAiguillageTriRail() throws FactoryException, CapteurExeption {
 		return getAiguillage(3, LongeurRailParDefaut);
 	}
 
-	public static Aiguillage getAiguillageQuadRail(Semaphore sema)
-			throws FactoryException {
+	/**
+	 * Fabrique un aiguillage avec Quatre rails connectées
+	 * @return Aiguillage crée
+	 * @throws FactoryException
+	 * @throws CapteurExeption 
+	 */
+	public static Aiguillage getAiguillageQuadRail()
+			throws FactoryException, CapteurExeption {
 		return getAiguillage(4, LongeurRailParDefaut);
 	}
 
@@ -123,6 +138,21 @@ public class ReseauxFerroviaireFactory {
 				.getJonctionQueue());
 		listeRail.add(rail);
 		return listeRail;
+	}
+
+	/**
+	 * Fabrique l'element de régulation associée à l'aiguillage donnée en parmaètre
+	 * @param aiguillage aiguillage dont l'element de régulation va controlle
+	 * @return Element de Regulation
+	 */
+	public static ElementRegulation getElementRegulation(Aiguillage aiguillage) {
+		ElementRegulation elementRegulation = new ElementRegulation(aiguillage);
+
+		// Association des capteurs de l'eguillage à l'element de regulation
+		for(int i=0;i<3;i++){
+			aiguillage.getListCapteurPresence().get(i).addObserver(elementRegulation);	
+		}
+		return elementRegulation;
 	}
 	
 	

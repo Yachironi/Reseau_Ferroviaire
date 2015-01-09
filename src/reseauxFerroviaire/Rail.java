@@ -151,7 +151,7 @@ public class Rail {
 
 	public ArrayList<CapteurPresence> getListCapteurPresence() {
 		ArrayList<CapteurPresence> capteursPresence = new ArrayList<>();
-		for (Iterator iterator = capteursPresence.iterator(); iterator
+		for (Iterator iterator = capteurs.iterator(); iterator
 				.hasNext();) {
 			try {
 				CapteurPresence capteurPresence = (CapteurPresence) iterator

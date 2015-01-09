@@ -33,7 +33,7 @@ public abstract class Capteur extends Observable {
 		this.id = idGen++;
 		this.monRail = monRail;
 		if (position <= 0 || position > monRail.getLongueur())
-			throw new CapteurExeption("Impossible de positioner à cet endroit");
+			throw new CapteurExeption("Impossible de positioner un capteur à cet endroit");
 		this.position = position;
 	}
 
@@ -43,7 +43,7 @@ public abstract class Capteur extends Observable {
 
 	public void setPosition(int position) throws CapteurExeption {
 		if (position <= 0 || position > monRail.getLongueur())
-			throw new CapteurExeption("Impossible de positioner à cet endroit");
+			throw new CapteurExeption("Impossible de positioner un capteur à cet endroit");
 		this.position = position;
 	}
 
