@@ -26,6 +26,20 @@ public class Rail {
 		semaQueue=null;
 	}
 
+
+	public Rail(int longueur, ArrayList<Capteur> capteurs,
+			Jonction jonctionTete, Jonction jonctionQueue, Semaphore semaTete,
+			Semaphore semaQueue) {
+		super();
+		this.longueur = longueur;
+		this.capteurs = capteurs;
+		this.jonctionTete = jonctionTete;
+		this.jonctionQueue = jonctionQueue;
+		this.semaTete = semaTete;
+		this.semaQueue = semaQueue;
+	}
+
+
 	public static int getIdGen() {
 		return idGen;
 	}
@@ -137,7 +151,7 @@ public class Rail {
 
 	public ArrayList<CapteurPresence> getListCapteurPresence() {
 		ArrayList<CapteurPresence> capteursPresence = new ArrayList<>();
-		for (Iterator iterator = capteursPresence.iterator(); iterator
+		for (Iterator iterator = capteurs.iterator(); iterator
 				.hasNext();) {
 			try {
 				CapteurPresence capteurPresence = (CapteurPresence) iterator

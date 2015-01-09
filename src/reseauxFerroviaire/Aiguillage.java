@@ -96,8 +96,13 @@ public class Aiguillage extends Jonction {
 		}
 	}
 	
-	protected void setSemaphoreConfiguration(EtatSemaphore etatSemaphore,int railIndex) throws EtatSemaphoreException{
+	protected void setSemaphoreConfiguration(EtatSemaphore etatSemaphore,int railIndex,int id) throws EtatSemaphoreException{
 		listeRail.get(railIndex).getSemaQueue().setEtat(etatSemaphore);
+		if(listeRail.get(railIndex).getJonctionTete().getId()==id){
+			listeRail.get(railIndex).getSemaTete().setEtat(etatSemaphore);
+		}else if(listeRail.get(railIndex).getJonctionQueue().getId()==id){
+			listeRail.get(railIndex).getSemaQueue().setEtat(etatSemaphore);
+		}
 	}
 
 	@Override

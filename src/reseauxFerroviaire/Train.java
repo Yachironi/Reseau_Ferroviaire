@@ -3,7 +3,7 @@ package reseauxFerroviaire;
 import exception.RailException;
 import exception.TrainException;
 
-public class Train {
+public class Train implements Runnable {
 
 	private static int idGen = -1;
 	private static int nbrInstance = 0;
@@ -118,7 +118,7 @@ public class Train {
 				avance();
 
 			} else if (etatTrain.getSens() == Direction.AMONT) {
-				recule();
+			//	recule();
 			}
 
 		} catch (RailException e) {
@@ -274,6 +274,49 @@ public class Train {
 		EtatCourant temp = courant;
 		// reste à parcourir
 
+		int restant = courant.getVitesseCourante()
+				- (courant.getMonRail().getLongueur() - courant.getPosiTete());
+
+		if (getTQRail()) {
+			suivant.setMonRail(courant.getMonRail().getJonctionQueue()
+					.getSuivant(courant.getMonRail()));
+		} else if (getQTRail()) {
+			suivant.setMonRail(courant.getMonRail().getJonctionTete()
+					.getSuivant(courant.getMonRail()));
+		}
+		restant = restant - suivant.getMonRail().getLongueur();
+		courant = suivant;
+		while (restant > 0) {
+			temp = suivant;
+			if (getQT(courant, temp) || getTT(courant, temp)) {
+
+				suivant.setMonRail(courant.getMonRail().getJonctionQueue()
+						.getSuivant(courant.getMonRail()));
+				restant = restant - suivant.getMonRail().getLongueur();
+				courant = suivant;
+				courant.setPosiTete(restant
+						+ courant.getMonRail().getLongueur());
+
+			} else if (getQQ(courant, temp) || getTQ(courant, temp)) {
+
+				suivant.setMonRail(courant.getMonRail().getJonctionTete()
+						.getSuivant(courant.getMonRail()));
+				courant = suivant;
+				courant.setPosiTete(courant.getMonRail().getLongueur()
+						- restant + 1);
+				restant = restant - suivant.getMonRail().getLongueur();
+			}
+		}
+	}
+
+	/*public void recule() throws RailException {
+
+		EtatCourant courant = etatTrain;
+		EtatCourant suivant = courant;
+		EtatCourant temp = courant;
+		// reste à parcourir
+
+
 		
 		
 		
@@ -322,9 +365,32 @@ public class Train {
 		
 		*/
 		
+
+/*		int restant = courant.getVitesseCourante() - courant.getPosiTete();
+
+		/*
+		 * if (courant.getMonRail().getJonctionQueue().getId() ==
+		 * 
+		 * 
+		 * suivant .getMonRail().getJonctionTete().getId() ||
+		 * courant.getMonRail().getJonctionTete().getId() == suivant
+		 * .getMonRail().getJonctionTete().getId()) {
+		 */
+
+	/*	suivant.setMonRail(courant.getMonRail().getJonctionTete()
+				.getSuivant(courant.getMonRail()));
+		restant = restant - suivant.getMonRail().getLongueur();
+
 		while (restant > 0) {
+
 			temp = suivant;
 			if (getQT(courant, temp)) {
+
+			if (courant.getMonRail().getJonctionQueue().getId() == suivant
+					.getMonRail().getJonctionTete().getId()
+					|| courant.getMonRail().getJonctionTete().getId() == suivant
+							.getMonRail().getJonctionTete().getId()) {
+				// increment: continue à incrementer
 				suivant.setMonRail(courant.getMonRail().getJonctionQueue()
 						.getSuivant(courant.getMonRail()));
 				restant = restant - suivant.getMonRail().getLongueur();
@@ -351,7 +417,11 @@ public class Train {
 				restant = restant - suivant.getMonRail().getLongueur();
 			}
 			else if(getTQ(courant, temp)){
-				
+			} else if (courant.getMonRail().getJonctionQueue().getId() == suivant
+					.getMonRail().getJonctionQueue().getId()
+					|| courant.getMonRail().getJonctionTete().getId() == suivant
+							.getMonRail().getJonctionQueue().getId()) {
+				// decrement à partir de la position du tete du train
 				suivant.setMonRail(courant.getMonRail().getJonctionTete()
 						.getSuivant(courant.getMonRail()));
 				courant = suivant;
@@ -362,7 +432,8 @@ public class Train {
 		}
 	}
 
-
+*/
+/*
 	public void recule() throws RailException {
 
 		EtatCourant courant = etatTrain;
@@ -407,7 +478,7 @@ public class Train {
 				restant = restant - suivant.getMonRail().getLongueur();
 			}
 		}
-	}
+*/
 
 	@Override
 	public boolean equals(Object arg) {
@@ -421,6 +492,22 @@ public class Train {
 		} catch (ClassCastException e) {
 			return false;
 		}
+	}
+
+	@Override
+	public void run() {
+		// TODO Stub de la méthode généré automatiquement
+		
+				try {
+					Thread.sleep(1000);
+					while(true){
+						deplacer();	
+					}
+				} catch (InterruptedException e) {
+					// TODO Bloc catch généré automatiquement
+					e.printStackTrace();
+				}
+	
 	}
 
 }
