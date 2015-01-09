@@ -48,4 +48,13 @@ public abstract class Semaphore {
 		}
 	}
 
+	public Direction getSens() {
+		return sens;
+	}
+
+	public void setSens(Direction sens) {
+		this.sens = sens;
+	}
+
+	
 }

@@ -21,6 +21,22 @@ public class JonctionSimple extends Jonction{
 		if(rail.equals(amont)) return aval;
 		else return amont;
 	}
+
+	public Rail getAmont() {
+		return amont;
+	}
+
+	public void setAmont(Rail amont) {
+		this.amont = amont;
+	}
+
+	public Rail getAval() {
+		return aval;
+	}
+
+	public void setAval(Rail aval) {
+		this.aval = aval;
+	}
 	
 	
 	

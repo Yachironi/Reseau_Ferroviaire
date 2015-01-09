@@ -37,6 +37,7 @@ public class ElementRegulation implements Observer {
 		 * demande de passage
 		 */
 		else if (!capteur.getMonRail().equals(aiguillage.getSortie())) {
+			System.out.println("capteur a detecte la presence d'un train");
 			demandePassage(capteur.getMonRail());
 		} else if (capteur.getMonRail().equals(aiguillage.getSortie())) {
 			try {

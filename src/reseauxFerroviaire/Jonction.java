@@ -1,5 +1,7 @@
 package reseauxFerroviaire;
 
+import exception.RailException;
+
 public abstract class Jonction {
 	  
 	private static int idGen = 0;
@@ -17,7 +19,7 @@ public abstract class Jonction {
 		id = idGen++;
 	}
 	
-	public abstract Rail getSuivant(Rail rail);
+	public abstract Rail getSuivant(Rail rail) throws RailException;
 
 	@Override
 	public String toString() {

@@ -8,12 +8,9 @@ public class EtatCourant {
 	private int vitesseCourante;
 	private Rail monRail;
 
-	public EtatCourant(int position, Rail rail, Direction sens) {
+	public EtatCourant(int position, Rail rail, Direction sens, int vmax) {
 		this.sens = sens;
-		this.vitesseCourante = 0; /*
-								 * A l'initialisation la vitesse courante est à
-								 * 0
-								 */
+		this.vitesseCourante = vmax; 
 		this.monRail = rail;
 		this.posiTete = position;
 	}

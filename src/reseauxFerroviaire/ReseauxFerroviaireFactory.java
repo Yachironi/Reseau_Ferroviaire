@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import exception.CapteurExeption;
 import exception.FactoryException;
+import exception.TrainException;
 
 public class ReseauxFerroviaireFactory {
 
-	final int minimum = 10;
 	public static int LongeurRailParDefaut = 30;
 
 	/**
@@ -20,6 +20,7 @@ public class ReseauxFerroviaireFactory {
 	 */
 	public static ArrayList<Rail> getSegment(int nombre, boolean buteeAmont,
 			boolean buteeAval, int taille) {
+		
 		ArrayList<Rail> segment = new ArrayList<Rail>();
 		int tailleRail = (int) taille / nombre;
 
@@ -27,10 +28,10 @@ public class ReseauxFerroviaireFactory {
 			segment.add(new Rail(tailleRail));
 		}
 
-		for (int i = 0; i < nombre - 1; i++) {
-			JonctionSimple jonc = new JonctionSimple();
+		for (int i = 0; i < nombre -1; i++) {
+			JonctionSimple jonc = new JonctionSimple(segment.get(i), segment.get(i+1));
+			segment.get(i+1).setJonctionTete(jonc);
 			segment.get(i).setJonctionQueue(jonc);
-			segment.get(i + 1).setJonctionTete(jonc);
 		}
 
 		if (buteeAmont) {
@@ -60,9 +61,8 @@ public class ReseauxFerroviaireFactory {
 		if (nbr > 2) {
 			ArrayList<Rail> listeRail = new ArrayList<Rail>();
 			Aiguillage aiguillage = new Aiguillage(listeRail, null, null);
-
+			
 			for (int i = 0; i < nbr; i++) {
-
 				Rail rail = new Rail(longueur);
 				SemaphoreBiCouleur semaTete = new SemaphoreBiCouleur(
 						EtatSemaphoreRouge.getInstance(), Direction.AMONT,
@@ -79,6 +79,8 @@ public class ReseauxFerroviaireFactory {
 				listeCapteur.add(capteurPresenceQueue);
 				listeCapteur.add(capteurPresenceTete);
 				rail.setCapteurs(listeCapteur);
+				rail.setTrains(new ArrayList<Train>());
+				
 				listeRail.add(rail);
 			}
 			aiguillage.setListeRail(listeRail);

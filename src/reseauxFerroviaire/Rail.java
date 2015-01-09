@@ -22,7 +22,7 @@ public class Rail {
 		this.longueur = longueur;
 		trains = null;
 		capteurs = null;
-		semaTete=null;
+		semaTete= null;
 		semaQueue=null;
 	}
 
@@ -30,13 +30,15 @@ public class Rail {
 	public Rail(int longueur, ArrayList<Capteur> capteurs,
 			Jonction jonctionTete, Jonction jonctionQueue, Semaphore semaTete,
 			Semaphore semaQueue) {
-		super();
+		//super();
+		this.id = idGen++;
 		this.longueur = longueur;
 		this.capteurs = capteurs;
 		this.jonctionTete = jonctionTete;
 		this.jonctionQueue = jonctionQueue;
 		this.semaTete = semaTete;
 		this.semaQueue = semaQueue;
+		this.trains = new ArrayList<Train>();
 	}
 
 
@@ -87,13 +89,13 @@ public class Rail {
 		return longueurEffective;
 	}
 
-	public void addTrain(Train train) throws Exception {
+	public void addTrain(Train train) throws RailException {
 		if (((trains.size() == 0) || ((trains.get(0).getEtatTrain().getSens() == train
 				.getEtatTrain().getSens())))
 				&& ((this.getLongeurEffective() + train.getLongueur()) <= this.longueur)) {
 			trains.add(train);
 		} else {
-			throw new Exception("Longueur de rail dépassé");
+			throw new RailException("Longueur de rail dépassé");
 		}
 	}
 
