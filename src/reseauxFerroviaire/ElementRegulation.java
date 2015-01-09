@@ -43,7 +43,7 @@ public class ElementRegulation implements Observer {
 				aiguillage.setSemaphoreConfiguration(
 						EtatSemaphoreRouge.getInstance(),
 						aiguillage.getListeRail().indexOf(
-								aiguillage.getEntree()));
+								aiguillage.getEntree()),aiguillage.getId());
 			} catch (EtatSemaphoreException e) {
 				System.out.println(e.getMessage());
 			}
@@ -100,7 +100,7 @@ public class ElementRegulation implements Observer {
 			aiguillage.setEntree(rail);
 			aiguillage.setSortie(aiguillage.getListeRail().get(indexSortie));
 			aiguillage.setSemaphoreConfiguration(EtatSemaphoreVert
-					.getInstance(), aiguillage.getListeRail().indexOf(rail));
+					.getInstance(), aiguillage.getListeRail().indexOf(rail),aiguillage.getId());
 			return true;
 		} else {
 			return false;
